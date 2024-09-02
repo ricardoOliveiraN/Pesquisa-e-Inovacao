@@ -202,34 +202,34 @@
 
                     <div class="div_hectare">
                         <p>Quantos hectares possui sua produção?</p>
-                        <input type="number" id="input_hectare">
+                        <input type="number" id="txt_hectare">
                     </div>
             
                     <div class="div_custo">
                         <p>Qual o custo por hectare(R$) ?</p>
-                        <input type="number" id="input_custo">
+                        <input type="number" id="txt_custo">
                     </div>
             
                     <div class="div_estado">
                         <p>Digite a sigla do seu Estado:</p>
-                        <input type="text" id="input_estado">
+                        <input type="text" id="txt_estado">
                     </div>
             
                     <div class="div_temperatura">
                         <p>Qual a temperatura do ambiente da produção? <br> 
                         (Muito frio, frio, moderado, quente, muito quente)</p>
-                        <input type="text" id="input_temperatura">
+                        <input type="text" id="txt_temperatura">
                     </div>                    
             
                     <div class="div_chuva">
                         <p>Como está o volume da chuva? <br> 
                         (Pouca chuva, moderada, muita chuva)</p>
-                        <input type="text" id="input_chuva">
+                        <input type="text" id="txt_chuva">
                     </div>
    
                     <div class="div_historico">
                         <p>Sua produção já foi contaminada pelo <br>fungo Ferrugem Asiática?(Sim/Não)</p>
-                        <input type="text" id="input_historico">
+                        <input type="text" id="txt_historico">
                     </div>
             
                     <div class="div_calcular">
@@ -242,3 +242,131 @@
     </div>        
 </body>
 </html>
+
+<script>
+
+function Calcular(){
+var hectare = Number(txt_hectare.value)
+var custo = Number(txt_custo.value)
+var estado = (txt_estado.value)
+var temperatura = (txt_estado.value)
+var chuva = (txt_estado.value)
+var historico = (txt_estado.value)
+var custo_total = custo * hectare
+var risco = 0
+
+
+if (estado == 'pr' ||estado == 'PR' || estado == 'Pr' ||estado == 'pR'){
+    risco = risco + 5 
+} else if (estado == 'sc' || estado == 'SC' ||estado == 'Sc' ||estado == 'sC'){
+    risco = risco + 5
+} else if (estado == 'rs' || estado == 'RS' ||estado == 'Rs' ||estado == 'rS'){
+    risco = risco + 5
+} else if (estado == 'mt' || estado == 'MT' ||estado == 'Mt' ||estado == 'mT'){
+    risco = risco + 5
+} else if (estado == 'ms' || estado == 'MS' ||estado == 'Ms' ||estado == 'mS'){
+    risco = risco + 5
+} else if (estado == 'go' || estado == 'GO' ||estado == 'Go' ||estado == 'gO'){
+    risco = risco + 4
+} else if (estado == 'df' || estado == 'DF' ||estado == 'Df' ||estado == 'dF'){
+    risco = risco + 4
+} else if (estado == 'sp' || estado == 'SP' ||estado == 'Sp' ||estado == 'sP'){
+    risco = risco + 4
+} else if (estado == 'mg' || estado == 'MG' ||estado == 'Mg' ||estado == 'mG'){
+    risco = risco + 4
+} else if (estado == 'es' || estado == 'ES' ||estado == 'Es' ||estado == 'eS'){
+    risco = risco + 4
+} else if (estado == 'rj' || estado == 'EJ' ||estado == 'Rj' ||estado == 'rJ'){
+    risco = risco + 3
+} else if (estado == 'ro' || estado == 'RO' ||estado == 'Ro' ||estado == 'rO'){
+    risco = risco + 3
+} else if (estado == 'to' || estado == 'TO' ||estado == 'To' ||estado == 'tO'){
+    risco = risco + 3
+} else if (estado == 'ac' || estado == 'AC' ||estado == 'Ac' ||estado == 'aC'){
+    risco = risco + 3
+} else if (estado == 'ap' || estado == 'AP' ||estado == 'Ap' ||estado == 'aP'){
+    risco = risco + 3
+} else if (estado == 'am' || estado == 'AM' ||estado == 'Am' ||estado == 'aM'){
+    risco = risco + 2
+} else if (estado == 'pa' || estado == 'PA' ||estado == 'Pa' ||estado == 'pA'){
+    risco = risco + 2
+} else if (estado == 'rr' || estado == 'RR' ||estado == 'Rr' ||estado == 'rR'){
+    risco = risco + 2
+} else if (estado == 'ba' || estado == 'BA' ||estado == 'Ba' ||estado == 'ba'){
+    risco = risco + 2
+} else if (estado == 'ma' || estado == 'MA' ||estado == 'Ma' ||estado == 'mA'){
+    risco = risco + 2
+} else if (estado == 'pi' || estado == 'PI' ||estado == 'Pi' ||estado == 'pI'){
+    risco = risco + 2
+} else if (estado == 'al' || estado == 'AL' ||estado == 'Al' ||estado == 'aL'){
+    risco = risco + 2
+} else if (estado == 'ce' || estado == 'CE' ||estado == 'Ce' ||estado == 'cE'){ 
+    risco = risco + 1
+} else if (estado == 'pb' || estado == 'PB' ||estado == 'Pb' ||estado == 'pB'){
+    risco = risco + 1
+} else if (estado == 'pr' || estado == 'PR' ||estado == 'Pr' ||estado == 'pR'){
+    risco = risco + 1
+} else if (estado == 'rn' || estado == 'RN' ||estado == 'Rn' ||estado == 'rN'){
+    risco = risco + 1
+} else if (estado == 'se' || estado == 'SE' ||estado == 'Se' ||estado == 'sE'){
+     risco = risco + 1
+} 
+else { }
+
+
+if (historico == 'sim' || historico == 'Sim'|| historico == "SIM") {
+    risco = risco + 2
+} else if (historico == 'não'|| historico == 'Não'|| historico == 'NÃO') {
+    risco = risco + 1
+} else {}
+
+
+if(temperatura == 'Muito frio'|| temperatura == 'muito frio') {
+    risco = risco + 3
+} else if(temperatura =='Frio'|| temperatura == 'frio') {
+    risco = risco + 2
+} else if (temperatura == 'Moderado' || temperatura == 'moderado'|| temperatura == 'Moderada' || temperatura == 'moderada') {
+    risco = risco + 1
+} else if(temperatura == 'Quente'|| temperatura == 'quente') {
+    risco = risco + 2
+} else if(temperatura =='Muito quente'|| temperatura == 'muito quente') {
+    risco = risco + 3
+} else {}
+    
+if(chuva == 'Muita chuva'|| chuva == 'muita chuva'){
+    risco = risco + 3
+} else if(chuva == 'Moderada'|| chuva == 'moderada'|| chuva == 'Moderado'|| chuva == 'moderado'){
+    risco = risco + 2
+} else if (chuva == 'Pouca chuva'|| chuva == 'pouca chuva'){
+    risco = risco + 1
+} else {}
+
+
+if (risco == 13) {
+    
+}
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// calcular o custo por hectare
+// e validar a entrada dos estados (aceitar a entrada se for SP ou sp, ou Sp, ou sP)
+// Isso com todas as siglas dos estados
+
+
+</script>
