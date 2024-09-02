@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+    <style>
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }        
+
+        .div_fundo {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #img_fundo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            object-fit: cover;
+            z-index: 1;
+            visibility: 10%;
+            opacity: 0.8;
+        }
+
+        .div_menu {
+            border: 1px solid;
+            height: 800px;
+            background-color: #7ed957;
+            width: 750px;
+            border-radius: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .div_logo {
+            box-sizing: border-box;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            margin-top: 20px;
+            height: 90px;
+        }    
+
+        #img_logo {
+            width: 220px;
+        }
+
+        #txt_simulador {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            font-size: 27px;
+        }
+
+        .div_questionario {
+            margin-top: 20px; /*-50 */
+        }
+
+        .div_hectare {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-left: 60px;
+            font-size: 22px;
+        }
+
+        .div_custo {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-left: 60px;
+            font-size: 22px;
+            margin-top: -10px;
+        }
+
+        .div_estado {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-left: 60px;
+            font-size: 22px;
+            margin-top: -10px;
+        }
+
+        .div_temperatura {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-left: 60px;
+            font-size: 22px;
+            margin-top: -10px;
+            width: 650px;
+        }
+
+        .div_chuva {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-left: 60px;
+            font-size: 22px;
+            margin-top: -10px;
+        }
+
+        .div_historico {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-left: 60px;
+            font-size: 22px;
+            margin-top: -10px;
+        }
+
+        #input_hectare {
+            margin-left: 10px;
+            height: 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            width: 100px;
+        }
+
+        #input_custo {
+            margin-left: 10px;
+            height: 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            width: 130px;
+        }
+
+        #input_estado {
+            margin-left: 10px;
+            height: 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            width: 100px;
+        }
+
+        #input_temperatura {
+            margin-left: 10px;
+            height: 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            width: 160px;
+        }
+
+        #input_chuva {
+            margin-left: 10px;
+            height: 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            width: 150px;
+        }
+
+        #input_historico {
+            margin-left: 10px;
+            height: 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            width: 130px;
+        }
+
+        #btn_calcular {
+            width: 180px;
+            height: 40px;
+            border-radius: 10px;
+            font-size: 18px;
+            margin-left: 280px;
+            background-color: #09680a;
+            color: white;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div_fundo">
+        <img src="plantacao.jpg" alt="" id="img_fundo">
+            <div class="div_menu">
+
+                <div class="div_logo">
+                    <img src="Logo.png" alt="logo do projeto" id="img_logo"> 
+                </div> 
+
+                <b id="txt_simulador">Simulador Financeiro</b>
+
+                <div class="div_questionario">
+
+                    <div class="div_hectare">
+                        <p>Quantos hectares possui sua produção?</p>
+                        <input type="number" id="input_hectare">
+                    </div>
+            
+                    <div class="div_custo">
+                        <p>Qual o custo por hectare(R$) ?</p>
+                        <input type="number" id="input_custo">
+                    </div>
+            
+                    <div class="div_estado">
+                        <p>Digite a sigla do seu Estado:</p>
+                        <input type="text" id="input_estado">
+                    </div>
+            
+                    <div class="div_temperatura">
+                        <p>Qual a temperatura do ambiente da produção? <br> 
+                        (Muito frio, frio, moderado, quente, muito quente)</p>
+                        <input type="text" id="input_temperatura">
+                    </div>                    
+            
+                    <div class="div_chuva">
+                        <p>Como está o volume da chuva? <br> 
+                        (Pouca chuva, moderada, muita chuva)</p>
+                        <input type="text" id="input_chuva">
+                    </div>
+   
+                    <div class="div_historico">
+                        <p>Sua produção já foi contaminada pelo <br>fungo Ferrugem Asiática?(Sim/Não)</p>
+                        <input type="text" id="input_historico">
+                    </div>
+            
+                    <div class="div_calcular">
+                        <button id="btn_calcular">Calcular Riscos</button>
+                    </div>
+
+                </div>
+                
+            </div>
+    </div>        
+</body>
+</html>
