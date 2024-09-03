@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Financeiro</title>
-    <style>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<style>
         body {
             display: flex;
             align-items: center;
@@ -14,6 +16,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            font-family: "Roboto", sans-serif;
         }        
 
         .div_fundo {
@@ -41,10 +44,10 @@
 
         .div_menu {
             border: 1px solid;
-            height: 800px;
+            height: 420px;
             background-color: #7ed957;
             width: 750px;
-            border-radius: 50px;
+            border-radius: 30px;
             position: relative;
             z-index: 2;
         }
@@ -54,8 +57,10 @@
             align-items: center;
             justify-content: center;
             display: flex;
-            margin-top: 20px;
             height: 90px;
+            border-radius: 30px;
+            margin-top: 10px;
+            margin-bottom: -10px;
         }    
 
         #img_logo {
@@ -66,307 +71,301 @@
             align-items: center;
             justify-content: center;
             display: flex;
-            font-size: 27px;
+            font-size: 30px;
+            margin-left: 50px;
         }
 
         .div_questionario {
             margin-top: 20px; 
+            margin-left: -30px;
+        }
+
+        .div_linha1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+            margin-left: 30px;
+            width: 750px;
+            height: 80px;
         }
 
         .div_hectare {
-            display: flex;
+            display: block;
             align-items: center;
             justify-content: left;
-            margin-left: 60px;
             font-size: 22px;
+            margin-bottom: 0;
+            margin-top: -20px;
+            margin-right: 0;
         }
 
-        .div_custo {
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            margin-left: 60px;
-            font-size: 22px;
-            margin-top: -10px;
-        }
-
-        .div_estado {
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            margin-left: 60px;
-            font-size: 22px;
-            margin-top: -10px;
-        }
-
-        .div_temperatura {
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            margin-left: 60px;
-            font-size: 22px;
-            margin-top: -10px;
-            width: 650px;
-        }
-
-        .div_chuva {
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            margin-left: 60px;
-            font-size: 22px;
-            margin-top: -10px;
-        }
-
-        .div_historico {
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            margin-left: 60px;
-            font-size: 22px;
-            margin-top: -10px;
+        #lbl_hectare {
+            margin-top: 0;
+            margin-bottom: 2px;
+            font-weight: 410;
         }
 
         #txt_hectare {
-            margin-left: 10px;
             height: 30px;
-            border-radius: 10px;
+            border-radius: 7px;
             font-size: 20px;
-            width: 100px;
+            width: 200px;
+            margin-top: -50px;
+        }
+
+        .div_custo {
+            display: block;
+            align-items: center;
+            justify-content: left;
+            margin-left: 25px;
+            margin-right: 25px;
+            margin-bottom: 0;
+        }
+
+        #lbl_custo {
+             margin-bottom: 0;
+             margin-top: 0;
+             font-weight: 410;
+             font-size: 22px;
+        }
+
+        .div_cifrao {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            height: 60px;
+            margin-top: -2px;
+        }
+
+        #lbl_cifrao {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: gray;
+            width: 60px;
+            height: 34px;
+            border-radius: 7px;
+            margin-top: 0px;
+            border: 1px solid;
+            font-size: 22px;
         }
 
         #txt_custo {
-            margin-left: 10px;
             height: 30px;
             border-radius: 10px;
             font-size: 20px;
-            width: 130px;
+            width: 137px;
+            border-radius: 7px;
+            margin-top: -22px;
+        }
+
+        .div_estado {
+            display: block;
+            align-items: center;
+            justify-content: left;
+            font-size: 22px;
+            margin-top: -45px;
+        }
+
+        #lbl_estado {
+            margin-bottom: 0;
+            font-weight: 410;
         }
 
         #txt_estado {
-            margin-left: 10px;
             height: 30px;
-            border-radius: 10px;
+            border-radius: 7px;
             font-size: 20px;
-            width: 100px;
+            width: 200px;
+        }
+
+        .div_linha2 {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-bottom: 50px;
+            margin-left: 30px;
+            margin-top: -50px;
+            width: 750px;
+            height: 90px;
+        }
+
+        .div_temperatura {
+            display: block;
+            align-items: center;
+            justify-content: left;
+            margin-left: 40px;
+            margin-top: 10px;
+            margin-right: 15px;
+            width: 450px;
+        }
+
+        #lbl_temperatura {
+            font-weight: 410;
+            margin-bottom: 0;
+            margin-top: 0;
+            font-size: 22px;
         }
 
         #txt_temperatura {
-            margin-left: 10px;
             height: 30px;
-            border-radius: 10px;
+            border-radius: 7px;
             font-size: 20px;
-            width: 160px;
+            width: 255px;
+            margin-bottom: 0;
         }
 
-        #txt_chuva {
-            margin-left: 10px;
-            height: 30px;
-            border-radius: 10px;
-            font-size: 20px;
-            width: 150px;
+        #lbl_desctemp {
+            margin-top: 0;
+            margin-bottom: 0;
         }
 
-        #txt_historico {
-            margin-left: 10px;
-            height: 30px;
-            border-radius: 10px;
-            font-size: 20px;
-            width: 130px;
-        }
-
-        #btn_calcular {
-            width: 180px;
-            height: 40px;
-            border-radius: 10px;
-            font-size: 18px;
-            margin-left: 280px;
-            background-color: #09680a;
-            color: white;
+        .div_chuva {
+            display: block;
+            align-items: center;
+            justify-content: left;
+            margin-left: -80px;
             margin-top: 10px;
         }
 
-        .div_mensagem {
-            position: relative;
-            display: block;
-            align-items: top;
-            justify-content: center;
-            z-index: 2;
-            border: 1px solid;
-            border-color: black;
-            border-radius: 50px;
-            width: 500px;
-            height: 400px;
-            background-color: #9ff979;         
-        } 
-
-        .div_informacoes {
-            width: 300px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 90px;
+        #lbl_chuva {
+            font-size: 22px;
+            margin-bottom: 0;
+            margin-top: 0;
+            font-weight: 410;
         }
 
-        #txt_informacoes{
-            font-size: 27px;
-            font-weight: bold;
+        #txt_chuva {
+            height: 30px;
+            border-radius: 7px;
+            font-size: 20px;
+            width: 200px;
         }
 
-        .div_resposta_estado, .div_resposta_historico, .div_resposta_hectare, .div_resposta_custo, .div_resposta_temperatura, .div_resposta_chuva {
-            width: 300px;
-            height: 50px;
+        #lbl_descchuva {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .div_linha3 {
             display: flex;
             align-items: center;
             justify-content: left;
-            margin-left: 10px;
+            margin-bottom: 50px;
+            margin-left: 70px;
+            margin-top: -30px;
+            width: 750px;
+            height: 90px;
         }
 
-        #txt_resposta_estado, #txt_resposta_historico, #txt_resposta_hectare, #txt_resposta_custo, #txt_resposta_temperatura, #txt_resposta_chuva {
-            font-size: 20px;
-        }
-
-        .div_mensagem2 {
-            position: relative;
+        .div_historico {
             display: block;
-            align-items: top;
-            justify-content: center;
-            z-index: 2;
-            border: 1px solid;
-            border-color: black;
-            border-radius: 50px;
-            width: 500px;
-            height: 400px;
-            background-color: #9ff979;         
-        } 
-
-        .div_resultado {
-            width: 300px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 90px;
-        }
-        
-        #txt_resultado{
-            font-size: 27px;
-            font-weight: bold;
-        }
-
-        .div_custo_total, .div_probabilidade {
-            width: 300px;
-            height: 50px;
-            display: flex;
             align-items: center;
             justify-content: left;
-            margin-left: 10px;
         }
 
-        #txt_custo_total, #txt_probabilidade {
-            font-size: 20px;
+        #lbl_historico {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 410;
+            font-size: 22px;
         }
+
+        #txt_historico {
+            height: 30px;
+            border-radius: 7px;
+            font-size: 20px;
+            width: 200px;
+        }
+
+        #lbl_deschistorico {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        #btn_calcular {
+            width: 210px;
+            height: 60px;
+            border-radius: 7px;
+            font-size: 20px;
+            font-weight: 410;
+            background-color: #09680a;
+            color: white;
+            margin-top: 0px;
+            margin-left: 75px;
+        }
+
     </style>
 </head>
 <body>
     <div class="div_fundo">
         <img src="plantacao.jpg" alt="" id="img_fundo">
 
-            <div class="div_mensagem" id="div_men1">
-
-                <div class="div_informacoes">
-                    <p id="txt_informacoes">Informações</p>
-                </div>
-
-                <div class="div_resposta_hectare">
-                    <p id="txt_resposta_hectare">Hectares:</p>
-                </div>
-
-                <div class="div_resposta_custo">
-                    <p id="txt_resposta_custo">Custo por Hectare:</p>
-                </div>
-
-                <div class="div_resposta_estado">
-                    <p id="txt_resposta_estado">Estado:</p>
-                </div>
-
-                <div class="div_resposta_temperatura">
-                    <p id="txt_resposta_temperatura">Temperatura:</p>
-                </div>
-
-                <div class="div_resposta_chuva">
-                    <p id="txt_resposta_chuva">Chuva:</p>
-                </div>
-                
-                <div class="div_resposta_historico">
-                    <p id="txt_resposta_historico">Produção já foi contaminada:</p>
-                </div>
-
-            </div>
-
             <div class="div_menu">
 
                 <div class="div_logo">
                     <img src="Logo.png" alt="logo do projeto" id="img_logo"> 
+                    <b id="txt_simulador">Simulador Financeiro</b>
                 </div> 
-
-                <b id="txt_simulador">Simulador Financeiro</b>
 
                 <div class="div_questionario">
 
-                    <div class="div_hectare">
-                        <p>Quantos hectares possui sua produção?</p>
-                        <input type="number" id="txt_hectare">
+                    <div class="div_linha1">
+
+                        <div class="div_hectare">
+                            <p id="lbl_hectare">Hectares:</p>
+                            <input type="number" id="txt_hectare">
+                        </div>
+                
+                        <div class="div_custo">
+                            <p id="lbl_custo">Custo por hectare:</p>
+                            <div class="div_cifrao">
+                                <p id="lbl_cifrao">R$</p>
+                                <input type="number" id="txt_custo">
+                            </div>
+
+                        </div>
+
+                        <div class="div_estado">
+                            <p id="lbl_estado">Sigla do Estado:</p>
+                            <input type="text" id="txt_estado">
+                        </div>
+
+                    </div>   
+                    
+                    <div class="div_linha2">
+
+                        <div class="div_temperatura">
+                            <p id="lbl_temperatura">Temperatura do ambiente:</p>
+                            <input type="text" id="txt_temperatura">
+                            <p id="lbl_desctemp">(Muito frio, frio, moderado, quente, muito quente)</p>
+                        </div> 
+
+                        <div class="div_chuva">
+                            <p id="lbl_chuva">Volume da chuva:</p>
+                            <input type="text" id="txt_chuva">
+                            <p id="lbl_descchuva">(Pouca, moderada, muita)</p>
+                        </div>
+                        
                     </div>
-            
-                    <div class="div_custo">
-                        <p>Qual o custo por hectare(R$) ?</p>
-                        <input type="number" id="txt_custo">
-                    </div>
-            
-                    <div class="div_estado">
-                        <p>Digite a sigla do seu Estado:</p>
-                        <input type="text" id="txt_estado">
-                    </div>
-            
-                    <div class="div_temperatura">
-                        <p>Qual a temperatura do ambiente da produção? <br> 
-                        (Muito frio, frio, moderado, quente, muito quente)</p>
-                        <input type="text" id="txt_temperatura">
-                    </div>                    
-            
-                    <div class="div_chuva">
-                        <p>Como está o volume da chuva? <br> 
-                        (Pouca chuva, moderada, muita chuva)</p>
-                        <input type="text" id="txt_chuva">
-                    </div>
-   
-                    <div class="div_historico">
-                        <p>Sua produção já foi contaminada pelo <br>fungo Ferrugem Asiática?(Sim/Não)</p>
-                        <input type="text" id="txt_historico">
-                    </div>
-            
-                    <div class="div_calcular">
-                        <button onclick="Calcular()" id="btn_calcular">Calcular Riscos</button>
+
+                    <div class="div_linha3">
+
+                        <div class="div_historico">
+                            <p id="lbl_historico">A produção já foi contaminada?</p>
+                            <input type="text" id="txt_historico">
+                            <p id="lbl_deschistorico">(Sim/Não)</p>
+                        </div>
+                
+                        <div class="div_calcular">
+                            <button onclick="Calcular()" id="btn_calcular">Calcular Riscos</button>
+                        </div>
+
                     </div>
 
                 </div>
                 
-            </div>
-
-            <div class="div_mensagem2" id="div_men2">
-                <div class="div_resultado">
-                    <p id="txt_resultado">Resultados</p>
-                </div>
-
-                <div class="div_custo_total">
-                    <p id="txt_custo_total">Custo total:</p>
-                </div>
-
-                <div class="div_probabilidade">
-                    <p id="txt_probabilidade">Probabilidade de contaminação:</p>
-                </div>
             </div>
 
     </div>        
