@@ -70,7 +70,7 @@
         }
 
         .div_questionario {
-            margin-top: 20px; /*-50 */
+            margin-top: 20px; 
         }
 
         .div_hectare {
@@ -127,7 +127,7 @@
             margin-top: -10px;
         }
 
-        #input_hectare {
+        #txt_hectare {
             margin-left: 10px;
             height: 30px;
             border-radius: 10px;
@@ -135,7 +135,7 @@
             width: 100px;
         }
 
-        #input_custo {
+        #txt_custo {
             margin-left: 10px;
             height: 30px;
             border-radius: 10px;
@@ -143,7 +143,7 @@
             width: 130px;
         }
 
-        #input_estado {
+        #txt_estado {
             margin-left: 10px;
             height: 30px;
             border-radius: 10px;
@@ -151,7 +151,7 @@
             width: 100px;
         }
 
-        #input_temperatura {
+        #txt_temperatura {
             margin-left: 10px;
             height: 30px;
             border-radius: 10px;
@@ -159,7 +159,7 @@
             width: 160px;
         }
 
-        #input_chuva {
+        #txt_chuva {
             margin-left: 10px;
             height: 30px;
             border-radius: 10px;
@@ -167,7 +167,7 @@
             width: 150px;
         }
 
-        #input_historico {
+        #txt_historico {
             margin-left: 10px;
             height: 30px;
             border-radius: 10px;
@@ -185,11 +185,126 @@
             color: white;
             margin-top: 10px;
         }
+
+        .div_mensagem {
+            position: relative;
+            display: block;
+            align-items: top;
+            justify-content: center;
+            z-index: 2;
+            border: 1px solid;
+            border-color: black;
+            border-radius: 50px;
+            width: 500px;
+            height: 400px;
+            background-color: #9ff979;         
+        } 
+
+        .div_informacoes {
+            width: 300px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 90px;
+        }
+
+        #txt_informacoes{
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .div_resposta_estado, .div_resposta_historico, .div_resposta_hectare, .div_resposta_custo, .div_resposta_temperatura, .div_resposta_chuva {
+            width: 300px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-left: 10px;
+        }
+
+        #txt_resposta_estado, #txt_resposta_historico, #txt_resposta_hectare, #txt_resposta_custo, #txt_resposta_temperatura, #txt_resposta_chuva {
+            font-size: 20px;
+        }
+
+        .div_mensagem2 {
+            position: relative;
+            display: block;
+            align-items: top;
+            justify-content: center;
+            z-index: 2;
+            border: 1px solid;
+            border-color: black;
+            border-radius: 50px;
+            width: 500px;
+            height: 400px;
+            background-color: #9ff979;         
+        } 
+
+        .div_resultado {
+            width: 300px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 90px;
+        }
+        
+        #txt_resultado{
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .div_custo_total, .div_probabilidade {
+            width: 300px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-left: 10px;
+        }
+
+        #txt_custo_total, #txt_probabilidade {
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="div_fundo">
         <img src="plantacao.jpg" alt="" id="img_fundo">
+
+            <div class="div_mensagem" id="div_men1">
+
+                <div class="div_informacoes">
+                    <p id="txt_informacoes">Informações</p>
+                </div>
+
+                <div class="div_resposta_hectare">
+                    <p id="txt_resposta_hectare">Hectares:</p>
+                </div>
+
+                <div class="div_resposta_custo">
+                    <p id="txt_resposta_custo">Custo por Hectare:</p>
+                </div>
+
+                <div class="div_resposta_estado">
+                    <p id="txt_resposta_estado">Estado:</p>
+                </div>
+
+                <div class="div_resposta_temperatura">
+                    <p id="txt_resposta_temperatura">Temperatura:</p>
+                </div>
+
+                <div class="div_resposta_chuva">
+                    <p id="txt_resposta_chuva">Chuva:</p>
+                </div>
+                
+                <div class="div_resposta_historico">
+                    <p id="txt_resposta_historico">Produção já foi contaminada:</p>
+                </div>
+
+            </div>
+
             <div class="div_menu">
 
                 <div class="div_logo">
@@ -233,12 +348,27 @@
                     </div>
             
                     <div class="div_calcular">
-                        <button id="btn_calcular">Calcular Riscos</button>
+                        <button onclick="Calcular()" id="btn_calcular">Calcular Riscos</button>
                     </div>
 
                 </div>
                 
             </div>
+
+            <div class="div_mensagem2" id="div_men2">
+                <div class="div_resultado">
+                    <p id="txt_resultado">Resultados</p>
+                </div>
+
+                <div class="div_custo_total">
+                    <p id="txt_custo_total">Custo total:</p>
+                </div>
+
+                <div class="div_probabilidade">
+                    <p id="txt_probabilidade">Probabilidade de contaminação:</p>
+                </div>
+            </div>
+
     </div>        
 </body>
 </html>
@@ -246,127 +376,192 @@
 <script>
 
 function Calcular(){
-var hectare = Number(txt_hectare.value)
-var custo = Number(txt_custo.value)
-var estado = (txt_estado.value)
-var temperatura = (txt_estado.value)
-var chuva = (txt_estado.value)
-var historico = (txt_estado.value)
-var custo_total = custo * hectare
-var risco = 0
+    var hectare = Number(txt_hectare.value)
+    var custo = Number(txt_custo.value)
+    var estado = (txt_estado.value)
+    var temperatura = (txt_estado.value)
+    var chuva = (txt_estado.value)
+    var historico = (txt_estado.value)
+    var custo_total = custo * hectare
+    var risco = 0
+    var nomeEstado = ''
+    var resposta_historico = ''
 
 
-if (estado == 'pr' ||estado == 'PR' || estado == 'Pr' ||estado == 'pR'){
-    risco = risco + 5 
-} else if (estado == 'sc' || estado == 'SC' ||estado == 'Sc' ||estado == 'sC'){
-    risco = risco + 5
-} else if (estado == 'rs' || estado == 'RS' ||estado == 'Rs' ||estado == 'rS'){
-    risco = risco + 5
-} else if (estado == 'mt' || estado == 'MT' ||estado == 'Mt' ||estado == 'mT'){
-    risco = risco + 5
-} else if (estado == 'ms' || estado == 'MS' ||estado == 'Ms' ||estado == 'mS'){
-    risco = risco + 5
-} else if (estado == 'go' || estado == 'GO' ||estado == 'Go' ||estado == 'gO'){
-    risco = risco + 4
-} else if (estado == 'df' || estado == 'DF' ||estado == 'Df' ||estado == 'dF'){
-    risco = risco + 4
-} else if (estado == 'sp' || estado == 'SP' ||estado == 'Sp' ||estado == 'sP'){
-    risco = risco + 4
-} else if (estado == 'mg' || estado == 'MG' ||estado == 'Mg' ||estado == 'mG'){
-    risco = risco + 4
-} else if (estado == 'es' || estado == 'ES' ||estado == 'Es' ||estado == 'eS'){
-    risco = risco + 4
-} else if (estado == 'rj' || estado == 'EJ' ||estado == 'Rj' ||estado == 'rJ'){
-    risco = risco + 3
-} else if (estado == 'ro' || estado == 'RO' ||estado == 'Ro' ||estado == 'rO'){
-    risco = risco + 3
-} else if (estado == 'to' || estado == 'TO' ||estado == 'To' ||estado == 'tO'){
-    risco = risco + 3
-} else if (estado == 'ac' || estado == 'AC' ||estado == 'Ac' ||estado == 'aC'){
-    risco = risco + 3
-} else if (estado == 'ap' || estado == 'AP' ||estado == 'Ap' ||estado == 'aP'){
-    risco = risco + 3
-} else if (estado == 'am' || estado == 'AM' ||estado == 'Am' ||estado == 'aM'){
-    risco = risco + 2
-} else if (estado == 'pa' || estado == 'PA' ||estado == 'Pa' ||estado == 'pA'){
-    risco = risco + 2
-} else if (estado == 'rr' || estado == 'RR' ||estado == 'Rr' ||estado == 'rR'){
-    risco = risco + 2
-} else if (estado == 'ba' || estado == 'BA' ||estado == 'Ba' ||estado == 'ba'){
-    risco = risco + 2
-} else if (estado == 'ma' || estado == 'MA' ||estado == 'Ma' ||estado == 'mA'){
-    risco = risco + 2
-} else if (estado == 'pi' || estado == 'PI' ||estado == 'Pi' ||estado == 'pI'){
-    risco = risco + 2
-} else if (estado == 'al' || estado == 'AL' ||estado == 'Al' ||estado == 'aL'){
-    risco = risco + 2
-} else if (estado == 'ce' || estado == 'CE' ||estado == 'Ce' ||estado == 'cE'){ 
-    risco = risco + 1
-} else if (estado == 'pb' || estado == 'PB' ||estado == 'Pb' ||estado == 'pB'){
-    risco = risco + 1
-} else if (estado == 'pr' || estado == 'PR' ||estado == 'Pr' ||estado == 'pR'){
-    risco = risco + 1
-} else if (estado == 'rn' || estado == 'RN' ||estado == 'Rn' ||estado == 'rN'){
-    risco = risco + 1
-} else if (estado == 'se' || estado == 'SE' ||estado == 'Se' ||estado == 'sE'){
-     risco = risco + 1
-} 
-else { }
+
+    if (estado == 'PR' || estado == 'pr' || estado == 'Pr' || estado == 'pR') {
+        risco = risco + 5
+        nomeEstado = 'Paraná'
+
+    } else if (estado == 'SC' || estado == 'sc' || estado == 'Sc' || estado == 'sC') {
+        risco = risco + 5
+        nomeEstado = 'Santa Catarina'
+            
+    } else if (estado == 'RS' || estado == 'rs' || estado == 'Rs' || estado == 'rS') {
+        risco = risco + 5
+        nomeEstado = 'Rio Grande do Sul'
+            
+    } else if (estado == 'MT' || estado == 'mt' || estado == 'Mt' || estado == 'mT') {
+        risco = risco + 5
+        nomeEstado = 'Mato Grosso'
+
+    } else if (estado == 'MS' || estado == 'ms' || estado == 'Ms' || estado == 'mS') {
+        risco = risco + 5
+        nomeEstado = 'Mato Grosso do Sul'
+
+    } else if (estado == 'GO' || estado == 'go' || estado == 'Go' || estado == 'gO') {
+        risco = risco + 5
+        nomeEstado = 'Goiás'
+
+    } else if (estado == 'DF' || estado == 'df' || estado == 'Df' || estado == 'dF') {
+        risco = risco + 5
+        nomeEstado = 'Distrito Federal'
+
+    } else if (estado == 'SP' || estado == 'sp' || estado == 'Sp' || estado == 'sP') {
+        risco = risco + 5
+        nomeEstado = 'São Paulo'
+
+    } else if (estado == 'MG' || estado == 'mg' || estado == 'Mg' || estado == 'mG') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Minas Gerais'
+            
+    } else if (estado == 'ES' || estado == 'es' || estado == 'Es' || estado == 'eS') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Espirito Santo'
+            
+    } else if (estado == 'RJ' || estado == 'rj' || estado == 'Rj' || estado == 'rJ') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Rio de Janeiro'
+            
+    } else if (estado == 'RO' || estado == 'ro' || estado == 'Ro' || estado == 'rO') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Rondônia'
+            
+    } else if (estado == 'TO' || estado == 'to' || estado == 'To' || estado == 'tO') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Tocantins'
+            
+    } else if (estado == 'AC' || estado == 'ac' || estado == 'Ac' || estado == 'aC') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Acre'
+            
+    } else if (estado == 'AP' || estado == 'ap' || estado == 'Ap' || estado == 'aP') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Amapá'
+            
+    } else if (estado == 'AM' || estado == 'am' || estado == 'Am' || estado == 'aM') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Amazonas'
+            
+    } else if (estado == 'PA' || estado == 'pa' || estado == 'Pa' || estado == 'pA') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Pará'
+            
+    } else if (estado == 'RR' || estado == 'rr' || estado == 'Rr' || estado == 'rR') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Roraima'
+            
+    } else if (estado == 'BA' || estado == 'ba' || estado == 'Ba' || estado == 'bA') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Bahia'
+            
+    } else if (estado == 'MA' || estado == 'ma' || estado == 'Ma' || estado == 'mA') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Maranhão'
+            
+    } else if (estado == 'PI' || estado == 'pi' || estado == 'Pi' || estado == 'pI') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Piauí'
+            
+    } else if (estado == 'AL' || estado == 'al' || estado == 'Al' || estado == 'aL') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Alagoas'
+            
+    } else if (estado == 'CE' || estado == 'ce' || estado == 'Ce' || estado == 'cE') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Ceará'
+            
+    } else if (estado == 'PB' || estado == 'pb' || estado == 'Pb' || estado == 'pB') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Paraíba'
+            
+    } else if (estado == 'PE' || estado == 'pe' || estado == 'Pe' || estado == 'pE') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Pernambuco'
+            
+    } else if (estado == 'RN' || estado == 'rn' || estado == 'Rn' || estado == 'rN') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Rio Grande do Norte'
+            
+    } else if (estado == 'SE' || estado == 'se' || estado == 'Se' || estado == 'sE') {
+        risco = risco + 3
+        var probabilidade = probabilidade + 15
+        nomeEstado = 'Sergipe'
+            
+    } else {
+        div_resposta_estado.innerHTML = (`Sigla do estado inválida! Digite a sigla novamente.`)
+    }
 
 
-if (historico == 'sim' || historico == 'Sim'|| historico == "SIM") {
-    risco = risco + 2
-} else if (historico == 'não'|| historico == 'Não'|| historico == 'NÃO') {
-    risco = risco + 1
-} else {}
+
+    if (historico == 'sim' || historico == 'Sim'|| historico == "SIM") {
+        risco = risco + 2
+        resposta_historico = 'Sim'
+    } else if (historico == 'não' || historico == 'Não'|| historico == 'NÃO') {
+        risco = risco + 1
+        resposta_historico = 'Não'
+    } else {
+        div_resposta_historico.innerHTML = (`Resposta inválida! Digite a novamente.`)
+    }
 
 
-if(temperatura == 'Muito frio'|| temperatura == 'muito frio') {
-    risco = risco + 3
-} else if(temperatura =='Frio'|| temperatura == 'frio') {
-    risco = risco + 2
-} else if (temperatura == 'Moderado' || temperatura == 'moderado'|| temperatura == 'Moderada' || temperatura == 'moderada') {
-    risco = risco + 1
-} else if(temperatura == 'Quente'|| temperatura == 'quente') {
-    risco = risco + 2
-} else if(temperatura =='Muito quente'|| temperatura == 'muito quente') {
-    risco = risco + 3
-} else {}
+    if(temperatura == 'Muito frio'|| temperatura == 'muito frio') {
+        risco = risco + 3
+    } else if(temperatura =='Frio'|| temperatura == 'frio') {
+        risco = risco + 2
+    } else if (temperatura == 'Moderado' || temperatura == 'moderado'|| temperatura == 'Moderada' || temperatura == 'moderada') {
+        risco = risco + 1
+    } else if(temperatura == 'Quente'|| temperatura == 'quente') {
+        risco = risco + 2
+    } else if(temperatura =='Muito quente'|| temperatura == 'muito quente') {
+        risco = risco + 3
+    } else {
+        div_resposta_estado.innerHTML = (`Resposta inválida! Digite a novamente.`)
+    }
+
+        
+    if(chuva == 'Muita chuva'|| chuva == 'muita chuva'){
+        risco = risco + 3
+    } else if(chuva == 'Moderada'|| chuva == 'moderada'|| chuva == 'Moderado'|| chuva == 'moderado'){
+        risco = risco + 2
+    } else if (chuva == 'Pouca chuva'|| chuva == 'pouca chuva'){
+        risco = risco + 1
+    } else {
+        div_resposta_estado.innerHTML = (`Resposta inválida! Digite a novamente.`)
+    }
+
+
+    if (risco == 13) {
+        
+    }
     
-if(chuva == 'Muita chuva'|| chuva == 'muita chuva'){
-    risco = risco + 3
-} else if(chuva == 'Moderada'|| chuva == 'moderada'|| chuva == 'Moderado'|| chuva == 'moderado'){
-    risco = risco + 2
-} else if (chuva == 'Pouca chuva'|| chuva == 'pouca chuva'){
-    risco = risco + 1
-} else {}
-
-
-if (risco == 13) {
-    
-}
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-// calcular o custo por hectare
-// e validar a entrada dos estados (aceitar a entrada se for SP ou sp, ou Sp, ou sP)
-// Isso com todas as siglas dos estados
-
-
+    }
 </script>
