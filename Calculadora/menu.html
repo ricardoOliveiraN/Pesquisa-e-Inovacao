@@ -44,12 +44,13 @@
 
         .div_menu {
             border: 1px solid;
-            height: 420px;
+            height: 470px;
             background-color: #7ed957;
             width: 750px;
             border-radius: 30px;
             position: relative;
             z-index: 2;
+            margin-top: -200px;
         }
 
         .div_logo {
@@ -285,6 +286,59 @@
             margin-bottom: 0;
         }
 
+        .div_fungicida {
+            width: 350px;
+            display: block;
+            align-items: center;
+            justify-content: center;
+            margin-left: 40px;
+            margin-top: -20px;
+        }
+
+        #lbl_fungicida {
+            margin-left: 10px;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 410;
+            font-size: 22px;
+        } 
+
+        #lbl_mensal {
+            font-size: 18px;
+        }
+
+        .div_cifrao2 {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            background-color: gray;
+            width: 60px;
+            height: 34px;
+            border-radius: 7px;
+            border: 1px solid;
+            font-size: 22px; 
+            margin-left: 12px;
+        }
+
+        #lbl_cifrao2 {
+            margin-left: 17px;
+        }
+
+        #txt_fungicida {
+            margin-left: 18px;
+            height: 30px;
+            border-radius: 7px;
+            font-size: 20px;
+            width: 200px;
+        }
+
+        .div_calcular {
+            width: 230px;
+            height: 80px;
+            margin-left: 300px;
+            margin-top: -45px;
+        }
+
         #btn_calcular {
             width: 210px;
             height: 60px;
@@ -293,9 +347,9 @@
             font-weight: 410;
             background-color: #09680a;
             color: white;
-            margin-top: 0px;
-            margin-left: 75px;
             cursor: pointer;
+            border: 1px solid;
+            border-color: white;
         }
 
     </style>
@@ -359,11 +413,21 @@
                             <input type="text" id="txt_historico">
                             <p id="lbl_deschistorico">(Sim/Não)</p>
                         </div>
-                
-                        <div class="div_calcular">
-                            <button onclick="Calcular()" id="btn_calcular">Calcular Riscos</button>
+
+                        <div class="div_fungicida">
+                            <p id="lbl_fungicida">Custo com fungicidas <a id="lbl_mensal">/ mês</a>:</p>
+                            
+                            <div class="div_cifrao2">
+                                <p id="lbl_cifrao2">R$</p>
+                                <input type="number" id="txt_fungicida">
+                            </div>
+
                         </div>
 
+                    </div>
+
+                    <div class="div_calcular">
+                        <button onclick="Calcular()" id="btn_calcular">Calcular Riscos</button>
                     </div>
 
                 </div>
@@ -385,10 +449,15 @@ function Calcular(){
     var temperatura = (txt_temperatura.value)
     var chuva = (txt_chuva.value)
     var historico = (txt_historico.value)
+    var fungicida = Number(txt_fungicida.value)
     var custo_total = custo * hectare
     var risco = 0
     var nomeEstado = ''
-    var resposta_historico = ''
+    var resposta_historico = '' 
+    var probabilidade = 0
+    var risco_texto = ''
+    var ganhos_fungicida = fungicida * 0.8
+    var ganhos_producao = 9000 + (fungicida * 0.2)
 
 
 
@@ -538,10 +607,12 @@ function Calcular(){
         risco = risco + 2
         resposta_historico = 'Sim'
         div_mensagem.innerHTML += (`<br> Produção já foi contaminada: Sim`)
+
     } else if (historico == 'não' || historico == 'Não'|| historico == 'NÃO') {
         risco = risco + 1
         resposta_historico = 'Não'
         div_mensagem.innerHTML += (`<br> Produção já foi contaminada: Não`)
+
     } else {
         txt_historico.value = (``)
         txt_historico.value += (`Resposta inválida!`)
@@ -552,18 +623,23 @@ function Calcular(){
     if(temperatura == 'Muito frio'|| temperatura == 'muito frio') {
         risco = risco + 3
         div_mensagem.innerHTML += (`<br> Temperatura: Muito Frio`)
+
     } else if(temperatura =='Frio'|| temperatura == 'frio') {
         risco = risco + 2
         div_mensagem.innerHTML += (`<br> Temperatura: Frio`)
+
     } else if (temperatura == 'Moderado' || temperatura == 'moderado'|| temperatura == 'Moderada' || temperatura == 'moderada') {
         risco = risco + 1
         div_mensagem.innerHTML += (`<br> Temperatura: Moderado`)
+
     } else if(temperatura == 'Quente'|| temperatura == 'quente') {
         risco = risco + 2
         div_mensagem.innerHTML += (`<br> Temperatura: Quente`)
+
     } else if(temperatura =='Muito quente'|| temperatura == 'muito quente') {
         risco = risco + 3
         div_mensagem.innerHTML += (`<br> Temperatura: Muito Quente`)
+
     } else {
         txt_temperatura.value = (``)
         txt_temperatura.value += (`Resposta inválida!`)
@@ -573,36 +649,106 @@ function Calcular(){
         
     if(chuva == 'Muita'|| chuva == 'muita'){
         risco = risco + 3
-        div_mensagem.innerHTML += (`<br> Volume da chuva: Muita chuva`)
+        div_mensagem.innerHTML += (`<br> Volume da chuva: Muita chuva <br>
+        Custo total: R$${custo_total}`)
+
     } else if(chuva == 'Moderada'|| chuva == 'moderada'|| chuva == 'Moderado'|| chuva == 'moderado'){
         risco = risco + 2
-        div_mensagem.innerHTML += (`<br> Volume da chuva: Moderada`)
+        div_mensagem.innerHTML += (`<br> Volume da chuva: Moderada <br>
+        Custo total: R$${custo_total}`)
+
     } else if (chuva == 'Pouca'|| chuva == 'pouca'){
         risco = risco + 1
-        div_mensagem.innerHTML += (`<br> Volume da chuva: Pouca chuva`)
+        div_mensagem.innerHTML += (`<br> Volume da chuva: Pouca chuva <br>
+        Custo total: R$${custo_total}`)
+
     } else {
         txt_chuva.value = (``)
         txt_chuva.value += (`Resposta inválida!`)
     }
-
+    
 
 
     if (txt_estado.value == 'Resposta inválida!' || txt_estado.value == '' || txt_temperatura.value == 'Resposta inválida!' || txt_temperatura.value == '' || txt_chuva.value == 'Resposta inválida!' || txt_chuva.value == '' || txt_historico.value == 'Resposta inválida!'
         || txt_historico.value == '') 
     {
         div_mensagem.innerHTML = (`<br> Responda todos os campos corretamente!`)
+
     } else if (txt_hectare.value == '' || txt_hectare.value <= 0) 
     {
         div_mensagem.innerHTML = (`<br> Insira um valor de hectares válido!`)
+
     } else if (txt_custo.value == '' || txt_custo.value <= 0) {
         div_mensagem.innerHTML = (`<br> Insira um valor de custo válido!`)
-    } 
+    } else if (txt_fungicida.value < 0) {
+        div_mensagem.innerHTML = (`<br> Insira um valor do custo com fungicida válido!`)
+    }
 
     
 
     if (risco == 13) {
-        
+        probabilidade = 90
+        risco_texto = 'Muito alto'
+        div_mensagem.innerHTML += (`<br> Risco: ${risco_texto} <br> 
+        Propabilidade: ${probabilidade}% de contaminação <br>
+        Futuros gastos com fungicidas: R$${ganhos_fungicida} <br>
+        Faturamento futuro: R$${ganhos_producao}`)
+
+    } else if (risco == 12) {
+        probabilidade = 85
+        risco_texto = 'Muito alto'
+        div_mensagem.innerHTML += (`<br> Risco: ${risco_texto} <br> 
+        Propabilidade: ${probabilidade}% de contaminação <br>
+        Futuros gastos com fungicidas: R$${ganhos_fungicida} <br>
+        Faturamento futuro: R$${ganhos_producao}`)
+
+    } else if (risco == 11) {
+        probabilidade = 80
+        risco_texto = 'Muito alto'
+        div_mensagem.innerHTML += (`<br> Risco: ${risco_texto} <br> 
+        Propabilidade: ${probabilidade}% de contaminação <br>
+        Futuros gastos com fungicidas: R$${ganhos_fungicida} <br>
+        Faturamento futuro: R$${ganhos_producao}`)
+
+    } else if (risco == 10) {
+        probabilidade = 75
+        risco_texto = 'Alto'
+        div_mensagem.innerHTML += (`<br> Risco: ${risco_texto} <br> 
+        Propabilidade: ${probabilidade}% de contaminação <br>
+        Futuros gastos com fungicidas: R$${ganhos_fungicida} <br>
+        Faturamento futuro: R$${ganhos_producao}`)
+
+    } else if (risco == 9) {
+        probabilidade = 70
+        risco_texto = 'Alto'
+        div_mensagem.innerHTML += (`<br> Risco: ${risco_texto} <br> 
+        Propabilidade: ${probabilidade}% de contaminação <br>
+        Futuros gastos com fungicidas: R$${ganhos_fungicida} <br>
+        Faturamento futuro: R$${ganhos_producao}`)
+
+    } else if (risco == 8) {
+        probabilidade = 65
+        risco_texto = 'Alto'
+        div_mensagem.innerHTML += (`<br> Risco: ${risco_texto} <br> 
+        Propabilidade: ${probabilidade}% de contaminação <br>
+        Futuros gastos com fungicidas: R$${ganhos_fungicida} <br>
+        Faturamento futuro: R$${ganhos_producao}`)
+
+    } else if (risco == 7) {
+        probabilidade = 60
+        risco_texto = 'Médio'
+        div_mensagem.innerHTML += (`<br> Risco: ${risco_texto} <br> 
+        Propabilidade: ${probabilidade}% de contaminação <br>
+        Futuros gastos com fungicidas: R$${ganhos_fungicida} <br>
+        Faturamento futuro: R$${ganhos_producao}`)
+
+    } else if (risco == 6) {
+        probabilidade = 55
+        risco_texto = 'Médio'
+        div_mensagem.innerHTML += (`<br> Risco: ${risco_texto} <br> 
+        Propabilidade: ${probabilidade}% de contaminação <br>
+        Futuros gastos com fungicidas: R$${ganhos_fungicida} <br>
+        Faturamento futuro: R$${ganhos_producao}`)
     }
-    
     }
 </script>
