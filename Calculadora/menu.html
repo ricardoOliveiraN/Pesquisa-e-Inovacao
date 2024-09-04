@@ -291,7 +291,7 @@
             border-radius: 7px;
             font-size: 20px;
             font-weight: 410;
-            background-color: #100d28;
+            background-color: #09680a;
             color: white;
             margin-top: 0px;
             margin-left: 75px;
@@ -368,9 +368,7 @@
 
                 </div>
 
-                <div id="div_mensagem">
-
-                </div>
+                <div id="div_mensagem"></div>
                 
             </div>
 
@@ -384,9 +382,9 @@ function Calcular(){
     var hectare = Number(txt_hectare.value)
     var custo = Number(txt_custo.value)
     var estado = (txt_estado.value)
-    var temperatura = (txt_estado.value)
-    var chuva = (txt_estado.value)
-    var historico = (txt_estado.value)
+    var temperatura = (txt_temperatura.value)
+    var chuva = (txt_chuva.value)
+    var historico = (txt_historico.value)
     var custo_total = custo * hectare
     var risco = 0
     var nomeEstado = ''
@@ -397,113 +395,141 @@ function Calcular(){
     if (estado == 'PR' || estado == 'pr' || estado == 'Pr' || estado == 'pR') {
         risco = risco + 5
         nomeEstado = 'Paraná'
+        div_mensagem.innerHTML = (`Estado: Paraná`)
 
     } else if (estado == 'SC' || estado == 'sc' || estado == 'Sc' || estado == 'sC') {
         risco = risco + 5
         nomeEstado = 'Santa Catarina'
+        div_mensagem.innerHTML = (`Estado: Santa Catarina`)
             
     } else if (estado == 'RS' || estado == 'rs' || estado == 'Rs' || estado == 'rS') {
         risco = risco + 5
         nomeEstado = 'Rio Grande do Sul'
+        div_mensagem.innerHTML = (`Estado: Rio Grande do Sul`)
             
     } else if (estado == 'MT' || estado == 'mt' || estado == 'Mt' || estado == 'mT') {
         risco = risco + 5
         nomeEstado = 'Mato Grosso'
+        div_mensagem.innerHTML = (`Estado: Mato Grosso`)
 
     } else if (estado == 'MS' || estado == 'ms' || estado == 'Ms' || estado == 'mS') {
         risco = risco + 5
         nomeEstado = 'Mato Grosso do Sul'
+        div_mensagem.innerHTML = (`Estado: Mato Grosso do Sul`)
 
     } else if (estado == 'GO' || estado == 'go' || estado == 'Go' || estado == 'gO') {
         risco = risco + 5
         nomeEstado = 'Goiás'
+        div_mensagem.innerHTML = (`Estado: Goiás`)
 
     } else if (estado == 'DF' || estado == 'df' || estado == 'Df' || estado == 'dF') {
         risco = risco + 5
         nomeEstado = 'Distrito Federal'
+        div_mensagem.innerHTML = (`Estado: Distrito Federal`)
 
     } else if (estado == 'SP' || estado == 'sp' || estado == 'Sp' || estado == 'sP') {
         risco = risco + 5
         nomeEstado = 'São Paulo'
+        div_mensagem.innerHTML = (`Estado: São Paulo`)
 
     } else if (estado == 'MG' || estado == 'mg' || estado == 'Mg' || estado == 'mG') {
         risco = risco + 3
         nomeEstado = 'Minas Gerais'
+        div_mensagem.innerHTML = (`Estado: Minas Gerais`)
             
     } else if (estado == 'ES' || estado == 'es' || estado == 'Es' || estado == 'eS') {
         risco = risco + 3
         nomeEstado = 'Espirito Santo'
+        div_mensagem.innerHTML = (`Estado: Espirito Santo`)
             
     } else if (estado == 'RJ' || estado == 'rj' || estado == 'Rj' || estado == 'rJ') {
         risco = risco + 3
         nomeEstado = 'Rio de Janeiro'
+        div_mensagem.innerHTML = (`Estado: Rio de Janeiro`)
             
     } else if (estado == 'RO' || estado == 'ro' || estado == 'Ro' || estado == 'rO') {
         risco = risco + 3
         nomeEstado = 'Rondônia'
+        div_mensagem.innerHTML = (`Estado: Rondônia`)
             
     } else if (estado == 'TO' || estado == 'to' || estado == 'To' || estado == 'tO') {
         risco = risco + 3
         nomeEstado = 'Tocantins'
+        div_mensagem.innerHTML = (`Estado: Tocantins`)
             
     } else if (estado == 'AC' || estado == 'ac' || estado == 'Ac' || estado == 'aC') {
         risco = risco + 3
         nomeEstado = 'Acre'
+        div_mensagem.innerHTML = (`Estado: Acre`)
             
     } else if (estado == 'AP' || estado == 'ap' || estado == 'Ap' || estado == 'aP') {
         risco = risco + 3
         nomeEstado = 'Amapá'
+        div_mensagem.innerHTML = (`Estado: Amapá`)
             
     } else if (estado == 'AM' || estado == 'am' || estado == 'Am' || estado == 'aM') {
         risco = risco + 3
         nomeEstado = 'Amazonas'
+        div_mensagem.innerHTML = (`Estado: Amazonas`)
             
     } else if (estado == 'PA' || estado == 'pa' || estado == 'Pa' || estado == 'pA') {
         risco = risco + 3
         nomeEstado = 'Pará'
+        div_mensagem.innerHTML = (`Estado: Pará`)
             
     } else if (estado == 'RR' || estado == 'rr' || estado == 'Rr' || estado == 'rR') {
         risco = risco + 3
         nomeEstado = 'Roraima'
+        div_mensagem.innerHTML = (`Estado: Roraima`)
             
     } else if (estado == 'BA' || estado == 'ba' || estado == 'Ba' || estado == 'bA') {
         risco = risco + 3
         nomeEstado = 'Bahia'
+        div_mensagem.innerHTML = (`Estado: Bahia`)
             
     } else if (estado == 'MA' || estado == 'ma' || estado == 'Ma' || estado == 'mA') {
         risco = risco + 3
         nomeEstado = 'Maranhão'
+        div_mensagem.innerHTML = (`Estado: Maranhão`)
             
     } else if (estado == 'PI' || estado == 'pi' || estado == 'Pi' || estado == 'pI') {
         risco = risco + 3
         nomeEstado = 'Piauí'
+        div_mensagem.innerHTML = (`Estado: Piauí`)
             
     } else if (estado == 'AL' || estado == 'al' || estado == 'Al' || estado == 'aL') {
         risco = risco + 3
         nomeEstado = 'Alagoas'
+        div_mensagem.innerHTML = (`Estado: Alagoas`)
             
     } else if (estado == 'CE' || estado == 'ce' || estado == 'Ce' || estado == 'cE') {
         risco = risco + 3
         nomeEstado = 'Ceará'
+        div_mensagem.innerHTML = (`Estado: Ceará`)
             
     } else if (estado == 'PB' || estado == 'pb' || estado == 'Pb' || estado == 'pB') {
         risco = risco + 3
         nomeEstado = 'Paraíba'
+        div_mensagem.innerHTML = (`Estado: Paraíba`)
             
     } else if (estado == 'PE' || estado == 'pe' || estado == 'Pe' || estado == 'pE') {
         risco = risco + 3
         nomeEstado = 'Pernambuco'
+        div_mensagem.innerHTML = (`Estado: Pernambuco`)
             
     } else if (estado == 'RN' || estado == 'rn' || estado == 'Rn' || estado == 'rN') {
         risco = risco + 3
         nomeEstado = 'Rio Grande do Norte'
+        div_mensagem.innerHTML = (`Estado: Rio Grande do Norte`)
             
     } else if (estado == 'SE' || estado == 'se' || estado == 'Se' || estado == 'sE') {
         risco = risco + 3
         nomeEstado = 'Sergipe'
+        div_mensagem.innerHTML = (`Estado: Sergipe`)
             
     } else {
-        div_mensagem.innerHTML = (`Sigla do estado inválida! Digite a sigla novamente.`)
+        txt_estado.value = (``)
+        txt_estado.value += (`Resposta inválida!`)
     }
 
 
@@ -511,39 +537,68 @@ function Calcular(){
     if (historico == 'sim' || historico == 'Sim'|| historico == "SIM") {
         risco = risco + 2
         resposta_historico = 'Sim'
+        div_mensagem.innerHTML += (`<br> Produção já foi contaminada: Sim`)
     } else if (historico == 'não' || historico == 'Não'|| historico == 'NÃO') {
         risco = risco + 1
         resposta_historico = 'Não'
+        div_mensagem.innerHTML += (`<br> Produção já foi contaminada: Não`)
     } else {
-        div_resposta_historico.innerHTML = (`Resposta inválida! Digite a novamente.`)
+        txt_historico.value = (``)
+        txt_historico.value += (`Resposta inválida!`)
     }
+
 
 
     if(temperatura == 'Muito frio'|| temperatura == 'muito frio') {
         risco = risco + 3
+        div_mensagem.innerHTML += (`<br> Temperatura: Muito Frio`)
     } else if(temperatura =='Frio'|| temperatura == 'frio') {
         risco = risco + 2
+        div_mensagem.innerHTML += (`<br> Temperatura: Frio`)
     } else if (temperatura == 'Moderado' || temperatura == 'moderado'|| temperatura == 'Moderada' || temperatura == 'moderada') {
         risco = risco + 1
+        div_mensagem.innerHTML += (`<br> Temperatura: Moderado`)
     } else if(temperatura == 'Quente'|| temperatura == 'quente') {
         risco = risco + 2
+        div_mensagem.innerHTML += (`<br> Temperatura: Quente`)
     } else if(temperatura =='Muito quente'|| temperatura == 'muito quente') {
         risco = risco + 3
+        div_mensagem.innerHTML += (`<br> Temperatura: Muito Quente`)
     } else {
-        div_resposta_estado.innerHTML = (`Resposta inválida! Digite a novamente.`)
+        txt_temperatura.value = (``)
+        txt_temperatura.value += (`Resposta inválida!`)
     }
+
 
         
-    if(chuva == 'Muita chuva'|| chuva == 'muita chuva'){
+    if(chuva == 'Muita'|| chuva == 'muita'){
         risco = risco + 3
+        div_mensagem.innerHTML += (`<br> Volume da chuva: Muita chuva`)
     } else if(chuva == 'Moderada'|| chuva == 'moderada'|| chuva == 'Moderado'|| chuva == 'moderado'){
         risco = risco + 2
-    } else if (chuva == 'Pouca chuva'|| chuva == 'pouca chuva'){
+        div_mensagem.innerHTML += (`<br> Volume da chuva: Moderada`)
+    } else if (chuva == 'Pouca'|| chuva == 'pouca'){
         risco = risco + 1
+        div_mensagem.innerHTML += (`<br> Volume da chuva: Pouca chuva`)
     } else {
-        div_resposta_estado.innerHTML = (`Resposta inválida! Digite a novamente.`)
+        txt_chuva.value = (``)
+        txt_chuva.value += (`Resposta inválida!`)
     }
 
+
+
+    if (txt_estado.value == 'Resposta inválida!' || txt_estado.value == '' || txt_temperatura.value == 'Resposta inválida!' || txt_temperatura.value == '' || txt_chuva.value == 'Resposta inválida!' || txt_chuva.value == '' || txt_historico.value == 'Resposta inválida!'
+        || txt_historico.value == '') 
+    {
+        div_mensagem.innerHTML = (`<br> Responda todos os campos corretamente!`)
+    } else if (txt_hectare.value == '' || txt_hectare.value <= 0) 
+    {
+        div_mensagem.innerHTML = (`<br> Insira um valor de hectares válido!`)
+    } else if (txt_custo.value == '' || txt_custo.value <= 0) {
+        div_mensagem.innerHTML = (`<br> Insira um valor de custo válido!`)
+    } 
+
+    
 
     if (risco == 13) {
         
