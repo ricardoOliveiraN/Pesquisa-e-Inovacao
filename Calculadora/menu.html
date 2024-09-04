@@ -61,10 +61,11 @@
             border-radius: 30px;
             margin-top: 10px;
             margin-bottom: -10px;
+            margin-left: -100px;
         }    
 
         #img_logo {
-            width: 220px;
+            width: 190px;
         }
 
         #txt_simulador {
@@ -290,7 +291,7 @@
             border-radius: 7px;
             font-size: 20px;
             font-weight: 410;
-            background-color: #09680a;
+            background-color: #100d28;
             color: white;
             margin-top: 0px;
             margin-left: 75px;
@@ -366,6 +367,10 @@
                     </div>
 
                 </div>
+
+                <div id="div_mensagem">
+
+                </div>
                 
             </div>
 
@@ -423,101 +428,82 @@ function Calcular(){
 
     } else if (estado == 'MG' || estado == 'mg' || estado == 'Mg' || estado == 'mG') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Minas Gerais'
             
     } else if (estado == 'ES' || estado == 'es' || estado == 'Es' || estado == 'eS') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Espirito Santo'
             
     } else if (estado == 'RJ' || estado == 'rj' || estado == 'Rj' || estado == 'rJ') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Rio de Janeiro'
             
     } else if (estado == 'RO' || estado == 'ro' || estado == 'Ro' || estado == 'rO') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Rondônia'
             
     } else if (estado == 'TO' || estado == 'to' || estado == 'To' || estado == 'tO') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Tocantins'
             
     } else if (estado == 'AC' || estado == 'ac' || estado == 'Ac' || estado == 'aC') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Acre'
             
     } else if (estado == 'AP' || estado == 'ap' || estado == 'Ap' || estado == 'aP') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Amapá'
             
     } else if (estado == 'AM' || estado == 'am' || estado == 'Am' || estado == 'aM') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Amazonas'
             
     } else if (estado == 'PA' || estado == 'pa' || estado == 'Pa' || estado == 'pA') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Pará'
             
     } else if (estado == 'RR' || estado == 'rr' || estado == 'Rr' || estado == 'rR') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Roraima'
             
     } else if (estado == 'BA' || estado == 'ba' || estado == 'Ba' || estado == 'bA') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Bahia'
             
     } else if (estado == 'MA' || estado == 'ma' || estado == 'Ma' || estado == 'mA') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Maranhão'
             
     } else if (estado == 'PI' || estado == 'pi' || estado == 'Pi' || estado == 'pI') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Piauí'
             
     } else if (estado == 'AL' || estado == 'al' || estado == 'Al' || estado == 'aL') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Alagoas'
             
     } else if (estado == 'CE' || estado == 'ce' || estado == 'Ce' || estado == 'cE') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Ceará'
             
     } else if (estado == 'PB' || estado == 'pb' || estado == 'Pb' || estado == 'pB') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Paraíba'
             
     } else if (estado == 'PE' || estado == 'pe' || estado == 'Pe' || estado == 'pE') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Pernambuco'
             
     } else if (estado == 'RN' || estado == 'rn' || estado == 'Rn' || estado == 'rN') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Rio Grande do Norte'
             
     } else if (estado == 'SE' || estado == 'se' || estado == 'Se' || estado == 'sE') {
         risco = risco + 3
-        var probabilidade = probabilidade + 15
         nomeEstado = 'Sergipe'
             
     } else {
-        div_resposta_estado.innerHTML = (`Sigla do estado inválida! Digite a sigla novamente.`)
+        div_mensagem.innerHTML = (`Sigla do estado inválida! Digite a sigla novamente.`)
     }
 
 
