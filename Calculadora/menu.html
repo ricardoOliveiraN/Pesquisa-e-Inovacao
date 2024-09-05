@@ -44,12 +44,13 @@
 
         .div_menu {
             border: 1px solid;
-            height: 420px;
-            background-color: #7ed957;
-            width: 750px;
             border-radius: 30px;
+            height: 470px;
+            background-color: #7ed957;
+            width: 800px;
             position: relative;
             z-index: 2;
+            margin-top: -200px;
         }
 
         .div_logo {
@@ -161,12 +162,113 @@
             margin-top: -22px;
         }
 
+        .div_faturamento {
+            display: block;
+            align-items: center;
+            justify-content: left;
+            margin-bottom: 0;
+            font-size: 22px;
+        }
+
+        #lbl_faturamento {
+            margin-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 2px;
+            font-weight: 410;
+        }
+
+        .div_cifrao2 {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-top: 0;
+        }
+
+        #lbl_cifrao2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: gray;
+            width: 60px;
+            height: 34px;
+            border-radius: 7px;
+            margin-top: -4px;
+            border: 1px solid;
+            font-size: 22px;
+        }
+
+        #txt_faturamento {
+            height: 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            width: 137px;
+            border-radius: 7px;
+            margin-top: -25px;
+        }
+
+        .div_linha2 {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin-bottom: 50px;
+            margin-left: 50px;
+            margin-top: -50px;
+            width: 750px;
+            height: 90px;
+        }
+
+        .div_fungicida {
+            width: 350px;
+            display: block;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+            margin-top: -24px;
+        }
+
+        #lbl_fungicida {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-weight: 410;
+            font-size: 22px;
+        } 
+
+        #lbl_mensal {
+            font-size: 18px;
+        }
+
+        .div_cifrao3 {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            background-color: gray;
+            width: 60px;
+            height: 34px;
+            border-radius: 7px;
+            border: 1px solid;
+            font-size: 22px; 
+        }
+
+        #lbl_cifrao3 {
+            margin-left: 17px;
+        }
+
+        #txt_fungicida {
+            margin-left: 18px;
+            height: 30px;
+            border-radius: 7px;
+            font-size: 20px;
+            width: 200px;
+        }
+
         .div_estado {
             display: block;
             align-items: center;
             justify-content: left;
             font-size: 22px;
             margin-top: -45px;
+            margin-left: -50px;
+            margin-right: 10px;
         }
 
         #lbl_estado {
@@ -181,53 +283,12 @@
             width: 200px;
         }
 
-        .div_linha2 {
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            margin-bottom: 50px;
-            margin-left: 30px;
-            margin-top: -50px;
-            width: 750px;
-            height: 90px;
-        }
-
-        .div_temperatura {
-            display: block;
-            align-items: center;
-            justify-content: left;
-            margin-left: 40px;
-            margin-top: 10px;
-            margin-right: 15px;
-            width: 450px;
-        }
-
-        #lbl_temperatura {
-            font-weight: 410;
-            margin-bottom: 0;
-            margin-top: 0;
-            font-size: 22px;
-        }
-
-        #txt_temperatura {
-            height: 30px;
-            border-radius: 7px;
-            font-size: 20px;
-            width: 255px;
-            margin-bottom: 0;
-        }
-
-        #lbl_desctemp {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
         .div_chuva {
             display: block;
             align-items: center;
             justify-content: left;
-            margin-left: -80px;
-            margin-top: 10px;
+            margin-top: -5px;
+            margin-left: 10px;
         }
 
         #lbl_chuva {
@@ -255,7 +316,7 @@
             justify-content: left;
             margin-bottom: 50px;
             margin-left: 70px;
-            margin-top: -30px;
+            margin-top: -45px;
             width: 750px;
             height: 90px;
         }
@@ -264,6 +325,7 @@
             display: block;
             align-items: center;
             justify-content: left;
+            margin-right: 100px;
         }
 
         #lbl_historico {
@@ -271,18 +333,55 @@
             margin-bottom: 0;
             font-weight: 410;
             font-size: 22px;
+            width: 320px;
         }
 
         #txt_historico {
             height: 30px;
             border-radius: 7px;
             font-size: 20px;
-            width: 200px;
+            width: 300px;
         }
 
         #lbl_deschistorico {
             margin-top: 0;
             margin-bottom: 0;
+        }
+
+        .div_temperatura {
+            display: block;
+            align-items: center;
+            justify-content: left;
+            margin-left: -50px;
+            width: 450px;
+        }
+
+        #lbl_temperatura {
+            font-weight: 410;
+            margin-bottom: 0;
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        #txt_temperatura {
+            height: 30px;
+            border-radius: 7px;
+            font-size: 20px;
+            width: 255px;
+            margin-bottom: 0;
+        }
+
+        #lbl_desctemp {
+            margin-top: 0;
+            margin-bottom: 0;
+            width: 400px;
+        }
+
+        .div_calcular {
+            width: 230px;
+            height: 80px;
+            margin-left: 300px;
+            margin-top: -45px;
         }
 
         #btn_calcular {
@@ -293,9 +392,135 @@
             font-weight: 410;
             background-color: #09680a;
             color: white;
-            margin-top: 0px;
-            margin-left: 75px;
             cursor: pointer;
+            border: 1px solid;
+            border-color: white;
+            margin-top: 10px;
+        }
+
+        .div_resultado1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid;
+            width: 800px;
+            height: 40px;
+            margin-left: 27px;
+            margin-top: 20px;
+            border-radius: 15px;
+            border-color: #7ed957;
+            background-color: white;
+            font-size: 20px;
+        }
+
+        #lbl_resultado_estado {
+            margin-right: 10px;
+        }
+
+        #img_ponto {
+            width: 30px;
+        }
+
+        #lbl_resultado_custo {
+            margin-left: 10px;
+        }
+
+        .div_resultado2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid;
+            width: 800px;
+            height: 40px;
+            margin-left: 27px;
+            margin-top: -4px;
+            border-radius: 15px;
+            border-color: #7ed957;
+            background-color: white;
+            font-size: 20px;
+        }
+
+        #img_alerta {
+            width: 20px;
+            margin-left: 2px;
+            margin-right: 10px;
+        }
+
+        #lbl_resultado_probabilidade {
+            margin-left: 10px;
+        }
+
+        .div_resultado3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid;
+            width: 800px;
+            height: 40px;
+            margin-left: 27px;
+            margin-top: -4px;
+            border-radius: 15px;
+            border-color: #7ed957;
+            background-color: #09680a;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #img_ganhos {
+            width: 20px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        .div_resultado4 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid;
+            width: 800px;
+            height: 40px;
+            margin-left: 27px;
+            margin-top: -4px;
+            border-radius: 15px;
+            border-color: #7ed957;
+            background-color: white;
+            font-size: 20px;
+        }
+
+        #img_seta_baixo {
+            width: 20px;
+            margin-left: 2px;
+            margin-right: 10px;
+        }
+
+        #lbl_resultado_produtividade {
+            margin-left: 10px;
+        }
+
+        #img_mais {
+            width: 14px;
+            margin-left: 5px;
+            margin-right: 10px;
+        }
+
+        #lbl_resultado_faturamento {
+            margin-left: 10px;
+        }
+
+        .div_resultado5 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid;
+            width: 800px;
+            height: 40px;
+            margin-left: 27px;
+            margin-top: -4px;
+            border-radius: 15px;
+            border-color: #7ed957;
+            background-color: white;
+            font-size: 20px;
         }
 
     </style>
@@ -322,9 +547,34 @@
                 
                         <div class="div_custo">
                             <p id="lbl_custo">Custo por hectare:</p>
+                            
                             <div class="div_cifrao">
                                 <p id="lbl_cifrao">R$</p>
                                 <input type="number" id="txt_custo">
+                            </div>
+
+                        </div>
+
+                        <div class="div_faturamento">
+                            <p id="lbl_faturamento">Faturamento mensal:</p>
+                            
+                            <div class="div_cifrao2">
+                                <p id="lbl_cifrao2">R$</p>
+                                <input type="number" id="txt_faturamento">
+                            </div>
+
+                        </div>
+
+                    </div>   
+                    
+                    <div class="div_linha2">
+
+                        <div class="div_fungicida">
+                            <p id="lbl_fungicida">Custo com fungicidas <a id="lbl_mensal">/mês</a>:</p>
+                            
+                            <div class="div_cifrao3">
+                                <p id="lbl_cifrao3">R$</p>
+                                <input type="number" id="txt_fungicida">
                             </div>
 
                         </div>
@@ -334,21 +584,11 @@
                             <input type="text" id="txt_estado">
                         </div>
 
-                    </div>   
-                    
-                    <div class="div_linha2">
-
-                        <div class="div_temperatura">
-                            <p id="lbl_temperatura">Temperatura do ambiente:</p>
-                            <input type="text" id="txt_temperatura">
-                            <p id="lbl_desctemp">(Muito frio, frio, moderado, quente, muito quente)</p>
-                        </div> 
-
                         <div class="div_chuva">
                             <p id="lbl_chuva">Volume da chuva:</p>
                             <input type="text" id="txt_chuva">
                             <p id="lbl_descchuva">(Pouca, moderada, muita)</p>
-                        </div>
+                        </div>                         
                         
                     </div>
 
@@ -359,11 +599,52 @@
                             <input type="text" id="txt_historico">
                             <p id="lbl_deschistorico">(Sim/Não)</p>
                         </div>
-                
-                        <div class="div_calcular">
-                            <button onclick="Calcular()" id="btn_calcular">Calcular Riscos</button>
-                        </div>
 
+                        <div class="div_temperatura">
+                            <p id="lbl_temperatura">Temperatura do ambiente:</p>
+                            <input type="text" id="txt_temperatura">
+                            <p id="lbl_desctemp">(Muito frio, frio, moderado, quente, muito quente)</p>
+                        </div> 
+
+                    </div>
+
+                    <div class="div_calcular">
+                        <button onclick="Calcular()" id="btn_calcular">Calcular</button>
+                    </div>
+
+                    <div class="div_resultado1">
+                        <p id="lbl_resultado_estado"></p>
+                        <img src="ponto.png" alt="" id="img_ponto">  
+                        <p id="lbl_resultado_custo"></p>                   
+                    </div>
+
+                    <div class="div_resultado2">
+                        <p id="lbl_resultado_risco"></p>
+                        <img src="alerta.png" alt="" id="img_alerta">
+                        <img src="ponto.png" alt="" id="img_ponto">
+                        <p id="lbl_resultado_probabilidade"></p>
+                        <img src="alerta.png" alt="" id="img_alerta">
+                    </div>
+
+                    <div class="div_resultado3">
+                        <img src="seta_ganhos.png" alt="" id="img_ganhos">
+                        <p id="lbl_ganhos">GANHOS COM O NOSSO PROJETO</p>
+                        <img src="seta_ganhos.png" alt="" id="img_ganhos">
+                    </div>
+
+                    <div class="div_resultado4">
+                        <p id="lbl_resultado_fungicida">Gastos com fungicida: -20%</p>
+                        <img src="seta_baixo.png" alt="" id="img_seta_baixo">
+                        <img src="ponto.png" alt="" id="img_ponto">
+                        <p id="lbl_resultado_produtividade">Produtividade: 10%</p>
+                        <img src="mais.png" alt="" id="img_mais">
+                        <img src="ponto.png" alt="" id="img_ponto">
+                        <p id="lbl_resultado_faturamento">Faturamento: 25%</p>
+                        <img src="mais.png" alt="" id="img_mais">
+                    </div>
+
+                    <div class="div_resultado5">
+                        
                     </div>
 
                 </div>
@@ -385,147 +666,155 @@ function Calcular(){
     var temperatura = (txt_temperatura.value)
     var chuva = (txt_chuva.value)
     var historico = (txt_historico.value)
+    var fungicida = Number(txt_fungicida.value)
+    var faturamento = Number(txt_faturamento.value)
     var custo_total = custo * hectare
     var risco = 0
     var nomeEstado = ''
-    var resposta_historico = ''
-
+    var resposta_historico = '' 
+    var probabilidade = 0
+    var risco_texto = ''
+    var gastos_fungicida = fungicida * 0.8
+    var ganhos_produtividade = hectare * 6
+    var ganhos_faturamento = ganhos_produtividade * 150
+    var ganhos_porcentagem_faturamento = (ganhos_faturamento / faturamento) * 100
+    var faturamento_liquido = ganhos_faturamento - gastos_fungicida
 
 
     if (estado == 'PR' || estado == 'pr' || estado == 'Pr' || estado == 'pR') {
         risco = risco + 5
         nomeEstado = 'Paraná'
-        div_mensagem.innerHTML = (`Estado: Paraná`)
+        lbl_resultado_estado.innerHTML = (`Estado: Paraná`)
 
     } else if (estado == 'SC' || estado == 'sc' || estado == 'Sc' || estado == 'sC') {
         risco = risco + 5
         nomeEstado = 'Santa Catarina'
-        div_mensagem.innerHTML = (`Estado: Santa Catarina`)
+        lbl_resultado_estado.innerHTML = (`Estado: Santa Catarina`)
             
     } else if (estado == 'RS' || estado == 'rs' || estado == 'Rs' || estado == 'rS') {
         risco = risco + 5
         nomeEstado = 'Rio Grande do Sul'
-        div_mensagem.innerHTML = (`Estado: Rio Grande do Sul`)
+        lbl_resultado_estado.innerHTML = (`Estado: Rio Grande do Sul`)
             
     } else if (estado == 'MT' || estado == 'mt' || estado == 'Mt' || estado == 'mT') {
         risco = risco + 5
         nomeEstado = 'Mato Grosso'
-        div_mensagem.innerHTML = (`Estado: Mato Grosso`)
+        lbl_resultado_estado.innerHTML = (`Estado: Mato Grosso`)
 
     } else if (estado == 'MS' || estado == 'ms' || estado == 'Ms' || estado == 'mS') {
         risco = risco + 5
         nomeEstado = 'Mato Grosso do Sul'
-        div_mensagem.innerHTML = (`Estado: Mato Grosso do Sul`)
+        lbl_resultado_estado.innerHTML = (`Estado: Mato Grosso do Sul`)
 
     } else if (estado == 'GO' || estado == 'go' || estado == 'Go' || estado == 'gO') {
         risco = risco + 5
         nomeEstado = 'Goiás'
-        div_mensagem.innerHTML = (`Estado: Goiás`)
+        lbl_resultado_estado.innerHTML = (`Estado: Goiás`)
 
     } else if (estado == 'DF' || estado == 'df' || estado == 'Df' || estado == 'dF') {
         risco = risco + 5
         nomeEstado = 'Distrito Federal'
-        div_mensagem.innerHTML = (`Estado: Distrito Federal`)
+        lbl_resultado_estado.innerHTML = (`Estado: Distrito Federal`)
 
     } else if (estado == 'SP' || estado == 'sp' || estado == 'Sp' || estado == 'sP') {
         risco = risco + 5
         nomeEstado = 'São Paulo'
-        div_mensagem.innerHTML = (`Estado: São Paulo`)
+        lbl_resultado_estado.innerHTML = (`Estado: São Paulo`)
 
     } else if (estado == 'MG' || estado == 'mg' || estado == 'Mg' || estado == 'mG') {
         risco = risco + 3
         nomeEstado = 'Minas Gerais'
-        div_mensagem.innerHTML = (`Estado: Minas Gerais`)
+        lbl_resultado_estado.innerHTML = (`Estado: Minas Gerais`)
             
     } else if (estado == 'ES' || estado == 'es' || estado == 'Es' || estado == 'eS') {
         risco = risco + 3
         nomeEstado = 'Espirito Santo'
-        div_mensagem.innerHTML = (`Estado: Espirito Santo`)
+        lbl_resultado_estado.innerHTML = (`Estado: Espirito Santo`)
             
     } else if (estado == 'RJ' || estado == 'rj' || estado == 'Rj' || estado == 'rJ') {
         risco = risco + 3
         nomeEstado = 'Rio de Janeiro'
-        div_mensagem.innerHTML = (`Estado: Rio de Janeiro`)
+        lbl_resultado_estado.innerHTML = (`Estado: Rio de Janeiro`)
             
     } else if (estado == 'RO' || estado == 'ro' || estado == 'Ro' || estado == 'rO') {
         risco = risco + 3
         nomeEstado = 'Rondônia'
-        div_mensagem.innerHTML = (`Estado: Rondônia`)
+        lbl_resultado_estado.innerHTML = (`Estado: Rondônia`)
             
     } else if (estado == 'TO' || estado == 'to' || estado == 'To' || estado == 'tO') {
         risco = risco + 3
         nomeEstado = 'Tocantins'
-        div_mensagem.innerHTML = (`Estado: Tocantins`)
+        lbl_resultado_estado.innerHTML = (`Estado: Tocantins`)
             
     } else if (estado == 'AC' || estado == 'ac' || estado == 'Ac' || estado == 'aC') {
         risco = risco + 3
         nomeEstado = 'Acre'
-        div_mensagem.innerHTML = (`Estado: Acre`)
+        lbl_resultado_estado.innerHTML = (`Estado: Acre`)
             
     } else if (estado == 'AP' || estado == 'ap' || estado == 'Ap' || estado == 'aP') {
         risco = risco + 3
         nomeEstado = 'Amapá'
-        div_mensagem.innerHTML = (`Estado: Amapá`)
+        lbl_resultado_estado.innerHTML = (`Estado: Amapá`)
             
     } else if (estado == 'AM' || estado == 'am' || estado == 'Am' || estado == 'aM') {
         risco = risco + 3
         nomeEstado = 'Amazonas'
-        div_mensagem.innerHTML = (`Estado: Amazonas`)
+        lbl_resultado_estado.innerHTML = (`Estado: Amazonas`)
             
     } else if (estado == 'PA' || estado == 'pa' || estado == 'Pa' || estado == 'pA') {
         risco = risco + 3
         nomeEstado = 'Pará'
-        div_mensagem.innerHTML = (`Estado: Pará`)
+        lbl_resultado_estado.innerHTML = (`Estado: Pará`)
             
     } else if (estado == 'RR' || estado == 'rr' || estado == 'Rr' || estado == 'rR') {
         risco = risco + 3
         nomeEstado = 'Roraima'
-        div_mensagem.innerHTML = (`Estado: Roraima`)
+        lbl_resultado_estado.innerHTML = (`Estado: Roraima`)
             
     } else if (estado == 'BA' || estado == 'ba' || estado == 'Ba' || estado == 'bA') {
         risco = risco + 3
         nomeEstado = 'Bahia'
-        div_mensagem.innerHTML = (`Estado: Bahia`)
+        lbl_resultado_estado.innerHTML = (`Estado: Bahia`)
             
     } else if (estado == 'MA' || estado == 'ma' || estado == 'Ma' || estado == 'mA') {
         risco = risco + 3
         nomeEstado = 'Maranhão'
-        div_mensagem.innerHTML = (`Estado: Maranhão`)
+        lbl_resultado_estado.innerHTML = (`Estado: Maranhão`)
             
     } else if (estado == 'PI' || estado == 'pi' || estado == 'Pi' || estado == 'pI') {
         risco = risco + 3
         nomeEstado = 'Piauí'
-        div_mensagem.innerHTML = (`Estado: Piauí`)
+        lbl_resultado_estado.innerHTML = (`Estado: Piauí`)
             
     } else if (estado == 'AL' || estado == 'al' || estado == 'Al' || estado == 'aL') {
         risco = risco + 3
         nomeEstado = 'Alagoas'
-        div_mensagem.innerHTML = (`Estado: Alagoas`)
+        lbl_resultado_estado.innerHTML = (`Estado: Alagoas`)
             
     } else if (estado == 'CE' || estado == 'ce' || estado == 'Ce' || estado == 'cE') {
         risco = risco + 3
         nomeEstado = 'Ceará'
-        div_mensagem.innerHTML = (`Estado: Ceará`)
+        lbl_resultado_estado.innerHTML = (`Estado: Ceará`)
             
     } else if (estado == 'PB' || estado == 'pb' || estado == 'Pb' || estado == 'pB') {
         risco = risco + 3
         nomeEstado = 'Paraíba'
-        div_mensagem.innerHTML = (`Estado: Paraíba`)
+        lbl_resultado_estado.innerHTML = (`Estado: Paraíba`)
             
     } else if (estado == 'PE' || estado == 'pe' || estado == 'Pe' || estado == 'pE') {
         risco = risco + 3
         nomeEstado = 'Pernambuco'
-        div_mensagem.innerHTML = (`Estado: Pernambuco`)
+        lbl_resultado_estado.innerHTML = (`Estado: Pernambuco`)
             
     } else if (estado == 'RN' || estado == 'rn' || estado == 'Rn' || estado == 'rN') {
         risco = risco + 3
         nomeEstado = 'Rio Grande do Norte'
-        div_mensagem.innerHTML = (`Estado: Rio Grande do Norte`)
+        lbl_resultado_estado.innerHTML = (`Estado: Rio Grande do Norte`)
             
     } else if (estado == 'SE' || estado == 'se' || estado == 'Se' || estado == 'sE') {
         risco = risco + 3
         nomeEstado = 'Sergipe'
-        div_mensagem.innerHTML = (`Estado: Sergipe`)
+        lbl_resultado_estado.innerHTML = (`Estado: Sergipe`)
             
     } else {
         txt_estado.value = (``)
@@ -537,11 +826,11 @@ function Calcular(){
     if (historico == 'sim' || historico == 'Sim'|| historico == "SIM") {
         risco = risco + 2
         resposta_historico = 'Sim'
-        div_mensagem.innerHTML += (`<br> Produção já foi contaminada: Sim`)
+
     } else if (historico == 'não' || historico == 'Não'|| historico == 'NÃO') {
         risco = risco + 1
         resposta_historico = 'Não'
-        div_mensagem.innerHTML += (`<br> Produção já foi contaminada: Não`)
+
     } else {
         txt_historico.value = (``)
         txt_historico.value += (`Resposta inválida!`)
@@ -551,19 +840,19 @@ function Calcular(){
 
     if(temperatura == 'Muito frio'|| temperatura == 'muito frio') {
         risco = risco + 3
-        div_mensagem.innerHTML += (`<br> Temperatura: Muito Frio`)
+
     } else if(temperatura =='Frio'|| temperatura == 'frio') {
         risco = risco + 2
-        div_mensagem.innerHTML += (`<br> Temperatura: Frio`)
+
     } else if (temperatura == 'Moderado' || temperatura == 'moderado'|| temperatura == 'Moderada' || temperatura == 'moderada') {
         risco = risco + 1
-        div_mensagem.innerHTML += (`<br> Temperatura: Moderado`)
+
     } else if(temperatura == 'Quente'|| temperatura == 'quente') {
         risco = risco + 2
-        div_mensagem.innerHTML += (`<br> Temperatura: Quente`)
+
     } else if(temperatura =='Muito quente'|| temperatura == 'muito quente') {
         risco = risco + 3
-        div_mensagem.innerHTML += (`<br> Temperatura: Muito Quente`)
+
     } else {
         txt_temperatura.value = (``)
         txt_temperatura.value += (`Resposta inválida!`)
@@ -573,36 +862,97 @@ function Calcular(){
         
     if(chuva == 'Muita'|| chuva == 'muita'){
         risco = risco + 3
-        div_mensagem.innerHTML += (`<br> Volume da chuva: Muita chuva`)
+
     } else if(chuva == 'Moderada'|| chuva == 'moderada'|| chuva == 'Moderado'|| chuva == 'moderado'){
         risco = risco + 2
-        div_mensagem.innerHTML += (`<br> Volume da chuva: Moderada`)
+
     } else if (chuva == 'Pouca'|| chuva == 'pouca'){
         risco = risco + 1
-        div_mensagem.innerHTML += (`<br> Volume da chuva: Pouca chuva`)
+
     } else {
         txt_chuva.value = (``)
         txt_chuva.value += (`Resposta inválida!`)
     }
-
+    
 
 
     if (txt_estado.value == 'Resposta inválida!' || txt_estado.value == '' || txt_temperatura.value == 'Resposta inválida!' || txt_temperatura.value == '' || txt_chuva.value == 'Resposta inválida!' || txt_chuva.value == '' || txt_historico.value == 'Resposta inválida!'
         || txt_historico.value == '') 
     {
         div_mensagem.innerHTML = (`<br> Responda todos os campos corretamente!`)
+
     } else if (txt_hectare.value == '' || txt_hectare.value <= 0) 
     {
         div_mensagem.innerHTML = (`<br> Insira um valor de hectares válido!`)
+
     } else if (txt_custo.value == '' || txt_custo.value <= 0) {
         div_mensagem.innerHTML = (`<br> Insira um valor de custo válido!`)
-    } 
+
+    } else if (txt_fungicida.value < 0) {
+        div_mensagem.innerHTML = (`<br> Insira um valor do custo com fungicida válido!`)
+
+    }  else if (txt_faturamento.value < 0) {
+        div_mensagem.innerHTML = (`<br> Insira um valor do faturamento válido!`)
+    }
 
     
 
     if (risco == 13) {
-        
+        probabilidade = 90
+        risco_texto = 'Muito alto'
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
+        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+
+
+    } else if (risco == 12) {
+        probabilidade = 85
+        risco_texto = 'Muito alto'
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
+        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+
+    } else if (risco == 11) {
+        probabilidade = 80
+        risco_texto = 'Muito alto'
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
+        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+
+    } else if (risco == 10) {
+        probabilidade = 75
+        risco_texto = 'Alto'
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
+        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+
+    } else if (risco == 9) {
+        probabilidade = 70
+        risco_texto = 'Alto'
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
+        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+
+    } else if (risco == 8) {
+        probabilidade = 65
+        risco_texto = 'Alto'
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
+        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+
+    } else if (risco == 7) {
+        probabilidade = 60
+        risco_texto = 'Médio'
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
+        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+
+    } else if (risco == 6) {
+        probabilidade = 55
+        risco_texto = 'Médio'
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
+        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
     }
-    
     }
 </script>
