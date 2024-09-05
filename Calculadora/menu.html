@@ -400,6 +400,8 @@
 
         #img_ponto {
             width: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
         .div_resultado1 {
@@ -420,11 +422,30 @@
         #img_alerta {
             width: 20px;
             margin-left: 2px;
-            margin-right: 10px;
         }
 
+        #lbl_resultado_risco {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lbl_alerta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
         #lbl_resultado_probabilidade {
-            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #lbl_alerta2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .div_resultado2 {
@@ -442,6 +463,12 @@
             color: white;
             font-size: 20px;
             font-weight: bold;
+        }
+
+        #lbl_ganhos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #img_ganhos {
@@ -465,24 +492,39 @@
             font-size: 20px;
         }
 
+        #lbl_resultado_fungicida {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         #img_seta_baixo {
             width: 20px;
             margin-left: 2px;
-            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #lbl_resultado_produtividade {
-            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
         }
 
         #img_mais {
             width: 14px;
             margin-left: 5px;
-            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #lbl_resultado_faturamento {
-            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .div_resultado4 {
@@ -499,6 +541,24 @@
             background-color: white;
             font-size: 20px;
         }
+
+        #lbl_resultado_ganhos_fungicida {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lbl_resultado_ganhos_produtividade {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lbl_resultado_ganhos_faturamento {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }    
 
     </style>
 </head>
@@ -591,7 +651,9 @@
 
                     <div class="div_resultado1">
                         <p id="lbl_resultado_risco"></p>
+                        <p id="lbl_alerta"></p>
                         <p id="lbl_resultado_probabilidade"></p>
+                        <p id="lbl_alerta2"></p>
                     </div>
 
                     <div class="div_resultado2">
@@ -837,24 +899,28 @@ function Calcular(){
 
     if (risco == 13) {
         risco_texto = 'Muito alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
-        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: 95%<img src="alerta.png" alt="" id="img_alerta">`)
-        
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_alerta.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: 95%`)
+        lbl_alerta2.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
+
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
 
         lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
         
-        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}`)
+        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 12) {
         probabilidade = (risco / 13) * 100
         risco_texto = 'Muito alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
-        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_alerta.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%`)
+        lbl_alerta2.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
@@ -862,15 +928,17 @@ function Calcular(){
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
 
-        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}`)
+        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 11) {
         probabilidade = (risco / 13) * 100
         risco_texto = 'Muito alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
-        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_alerta.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%`)
+        lbl_alerta2.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
@@ -878,15 +946,17 @@ function Calcular(){
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
 
-        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}`)
+        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 10) {
         probabilidade = (risco / 13) * 100
         risco_texto = 'Alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
-        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_alerta.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%`)
+        lbl_alerta2.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
@@ -894,15 +964,17 @@ function Calcular(){
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
 
-        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}`)
+        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 9) {
         probabilidade = (risco / 13) * 100
         risco_texto = 'Alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
-        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_alerta.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%`)
+        lbl_alerta2.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
@@ -910,15 +982,17 @@ function Calcular(){
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
 
-        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}`)
+        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 8) {
         probabilidade = (risco / 13) * 100
         risco_texto = 'Alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
-        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_alerta.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%`)
+        lbl_alerta2.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
@@ -926,15 +1000,17 @@ function Calcular(){
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
 
-        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}`)
+        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 7) {
         probabilidade = (risco / 13) * 100
         risco_texto = 'Médio'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
-        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_alerta.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%`)
+        lbl_alerta2.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
@@ -942,15 +1018,17 @@ function Calcular(){
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
 
-        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}`)
+        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 6) {
         probabilidade = (risco / 13) * 100
         risco_texto = 'Médio'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
-        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
+        lbl_alerta.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%`)
+        lbl_alerta2.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
@@ -958,9 +1036,9 @@ function Calcular(){
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
 
-        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}`)
+        lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
+        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
     }
     }
 </script>
