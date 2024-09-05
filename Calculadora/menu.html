@@ -398,34 +398,11 @@
             margin-top: 10px;
         }
 
-        .div_resultado1 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid;
-            width: 800px;
-            height: 40px;
-            margin-left: 27px;
-            margin-top: 20px;
-            border-radius: 15px;
-            border-color: #7ed957;
-            background-color: white;
-            font-size: 20px;
-        }
-
-        #lbl_resultado_estado {
-            margin-right: 10px;
-        }
-
         #img_ponto {
             width: 30px;
         }
 
-        #lbl_resultado_custo {
-            margin-left: 10px;
-        }
-
-        .div_resultado2 {
+        .div_resultado1 {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -450,7 +427,7 @@
             margin-left: 10px;
         }
 
-        .div_resultado3 {
+        .div_resultado2 {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -473,7 +450,7 @@
             margin-left: 10px;
         }
 
-        .div_resultado4 {
+        .div_resultado3 {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -508,7 +485,7 @@
             margin-left: 10px;
         }
 
-        .div_resultado5 {
+        .div_resultado4 {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -613,37 +590,30 @@
                     </div>
 
                     <div class="div_resultado1">
-                        <p id="lbl_resultado_estado"></p>
-                        <img src="ponto.png" alt="" id="img_ponto">  
-                        <p id="lbl_resultado_custo"></p>                   
+                        <p id="lbl_resultado_risco"></p>
+                        
+                        
+                        <p id="lbl_resultado_probabilidade"></p>
+                        
                     </div>
 
                     <div class="div_resultado2">
-                        <p id="lbl_resultado_risco"></p>
-                        <img src="alerta.png" alt="" id="img_alerta">
-                        <img src="ponto.png" alt="" id="img_ponto">
-                        <p id="lbl_resultado_probabilidade"></p>
-                        <img src="alerta.png" alt="" id="img_alerta">
-                    </div>
-
-                    <div class="div_resultado3">
                         <img src="seta_ganhos.png" alt="" id="img_ganhos">
                         <p id="lbl_ganhos">GANHOS COM O NOSSO PROJETO</p>
                         <img src="seta_ganhos.png" alt="" id="img_ganhos">
                     </div>
 
-                    <div class="div_resultado4">
+                    <div class="div_resultado3">
                         <p id="lbl_resultado_fungicida">Gastos com fungicida: -20%</p>
                         <img src="seta_baixo.png" alt="" id="img_seta_baixo">
                         <img src="ponto.png" alt="" id="img_ponto">
                         <p id="lbl_resultado_produtividade">Produtividade: 10%</p>
                         <img src="mais.png" alt="" id="img_mais">
                         <img src="ponto.png" alt="" id="img_ponto">
-                        <p id="lbl_resultado_faturamento">Faturamento: 25%</p>
-                        <img src="mais.png" alt="" id="img_mais">
+                        <p id="lbl_resultado_faturamento"></p>
                     </div>
 
-                    <div class="div_resultado5">
+                    <div class="div_resultado4">
                         
                     </div>
 
@@ -668,153 +638,128 @@ function Calcular(){
     var historico = (txt_historico.value)
     var fungicida = Number(txt_fungicida.value)
     var faturamento = Number(txt_faturamento.value)
-    var custo_total = custo * hectare
     var risco = 0
     var nomeEstado = ''
     var resposta_historico = '' 
     var probabilidade = 0
     var risco_texto = ''
-    var gastos_fungicida = fungicida * 0.8
-    var ganhos_produtividade = hectare * 6
-    var ganhos_faturamento = ganhos_produtividade * 150
-    var ganhos_porcentagem_faturamento = (ganhos_faturamento / faturamento) * 100
-    var faturamento_liquido = ganhos_faturamento - gastos_fungicida
+    var custo_inicial = custo * hectare // custo total da produção sem sensor
+    var gastos_fungicida = fungicida * 0.8 // custo novo com fungicidas com sensor
+    var custo_final = custo_inicial - gastos_fungicida // custo final da produção com sensor
+    var ganhos_produtividade = hectare * 6 // novos ganhos em sacas da produtivade(colheita) com sensor
+    var ganhos_faturamento = ganhos_produtividade * 150 // novos ganhos da produtivade(colheita) em reais com sensor
+    var ganhos_porcentagem_faturamento = (ganhos_faturamento / faturamento) * 100 // A porcentagem do novo faturamento com sensor
+    var novo_faturamento = faturamento + ganhos_faturamento // novo faturamento total sem descontos com sensor
+    var lucro_sensor = novo_faturamento - custo_final // lucro final com sensor
 
 
     if (estado == 'PR' || estado == 'pr' || estado == 'Pr' || estado == 'pR') {
         risco = risco + 5
         nomeEstado = 'Paraná'
-        lbl_resultado_estado.innerHTML = (`Estado: Paraná`)
 
     } else if (estado == 'SC' || estado == 'sc' || estado == 'Sc' || estado == 'sC') {
         risco = risco + 5
         nomeEstado = 'Santa Catarina'
-        lbl_resultado_estado.innerHTML = (`Estado: Santa Catarina`)
             
     } else if (estado == 'RS' || estado == 'rs' || estado == 'Rs' || estado == 'rS') {
         risco = risco + 5
         nomeEstado = 'Rio Grande do Sul'
-        lbl_resultado_estado.innerHTML = (`Estado: Rio Grande do Sul`)
             
     } else if (estado == 'MT' || estado == 'mt' || estado == 'Mt' || estado == 'mT') {
         risco = risco + 5
         nomeEstado = 'Mato Grosso'
-        lbl_resultado_estado.innerHTML = (`Estado: Mato Grosso`)
 
     } else if (estado == 'MS' || estado == 'ms' || estado == 'Ms' || estado == 'mS') {
         risco = risco + 5
         nomeEstado = 'Mato Grosso do Sul'
-        lbl_resultado_estado.innerHTML = (`Estado: Mato Grosso do Sul`)
 
     } else if (estado == 'GO' || estado == 'go' || estado == 'Go' || estado == 'gO') {
         risco = risco + 5
         nomeEstado = 'Goiás'
-        lbl_resultado_estado.innerHTML = (`Estado: Goiás`)
 
     } else if (estado == 'DF' || estado == 'df' || estado == 'Df' || estado == 'dF') {
         risco = risco + 5
         nomeEstado = 'Distrito Federal'
-        lbl_resultado_estado.innerHTML = (`Estado: Distrito Federal`)
 
     } else if (estado == 'SP' || estado == 'sp' || estado == 'Sp' || estado == 'sP') {
         risco = risco + 5
         nomeEstado = 'São Paulo'
-        lbl_resultado_estado.innerHTML = (`Estado: São Paulo`)
 
     } else if (estado == 'MG' || estado == 'mg' || estado == 'Mg' || estado == 'mG') {
         risco = risco + 3
         nomeEstado = 'Minas Gerais'
-        lbl_resultado_estado.innerHTML = (`Estado: Minas Gerais`)
             
     } else if (estado == 'ES' || estado == 'es' || estado == 'Es' || estado == 'eS') {
         risco = risco + 3
         nomeEstado = 'Espirito Santo'
-        lbl_resultado_estado.innerHTML = (`Estado: Espirito Santo`)
             
     } else if (estado == 'RJ' || estado == 'rj' || estado == 'Rj' || estado == 'rJ') {
         risco = risco + 3
         nomeEstado = 'Rio de Janeiro'
-        lbl_resultado_estado.innerHTML = (`Estado: Rio de Janeiro`)
             
     } else if (estado == 'RO' || estado == 'ro' || estado == 'Ro' || estado == 'rO') {
         risco = risco + 3
         nomeEstado = 'Rondônia'
-        lbl_resultado_estado.innerHTML = (`Estado: Rondônia`)
             
     } else if (estado == 'TO' || estado == 'to' || estado == 'To' || estado == 'tO') {
         risco = risco + 3
         nomeEstado = 'Tocantins'
-        lbl_resultado_estado.innerHTML = (`Estado: Tocantins`)
             
     } else if (estado == 'AC' || estado == 'ac' || estado == 'Ac' || estado == 'aC') {
         risco = risco + 3
         nomeEstado = 'Acre'
-        lbl_resultado_estado.innerHTML = (`Estado: Acre`)
             
     } else if (estado == 'AP' || estado == 'ap' || estado == 'Ap' || estado == 'aP') {
         risco = risco + 3
         nomeEstado = 'Amapá'
-        lbl_resultado_estado.innerHTML = (`Estado: Amapá`)
             
     } else if (estado == 'AM' || estado == 'am' || estado == 'Am' || estado == 'aM') {
         risco = risco + 3
         nomeEstado = 'Amazonas'
-        lbl_resultado_estado.innerHTML = (`Estado: Amazonas`)
             
     } else if (estado == 'PA' || estado == 'pa' || estado == 'Pa' || estado == 'pA') {
         risco = risco + 3
         nomeEstado = 'Pará'
-        lbl_resultado_estado.innerHTML = (`Estado: Pará`)
             
     } else if (estado == 'RR' || estado == 'rr' || estado == 'Rr' || estado == 'rR') {
         risco = risco + 3
         nomeEstado = 'Roraima'
-        lbl_resultado_estado.innerHTML = (`Estado: Roraima`)
             
     } else if (estado == 'BA' || estado == 'ba' || estado == 'Ba' || estado == 'bA') {
         risco = risco + 3
         nomeEstado = 'Bahia'
-        lbl_resultado_estado.innerHTML = (`Estado: Bahia`)
             
     } else if (estado == 'MA' || estado == 'ma' || estado == 'Ma' || estado == 'mA') {
         risco = risco + 3
         nomeEstado = 'Maranhão'
-        lbl_resultado_estado.innerHTML = (`Estado: Maranhão`)
             
     } else if (estado == 'PI' || estado == 'pi' || estado == 'Pi' || estado == 'pI') {
         risco = risco + 3
         nomeEstado = 'Piauí'
-        lbl_resultado_estado.innerHTML = (`Estado: Piauí`)
-            
+
     } else if (estado == 'AL' || estado == 'al' || estado == 'Al' || estado == 'aL') {
         risco = risco + 3
         nomeEstado = 'Alagoas'
-        lbl_resultado_estado.innerHTML = (`Estado: Alagoas`)
             
     } else if (estado == 'CE' || estado == 'ce' || estado == 'Ce' || estado == 'cE') {
         risco = risco + 3
         nomeEstado = 'Ceará'
-        lbl_resultado_estado.innerHTML = (`Estado: Ceará`)
             
     } else if (estado == 'PB' || estado == 'pb' || estado == 'Pb' || estado == 'pB') {
         risco = risco + 3
         nomeEstado = 'Paraíba'
-        lbl_resultado_estado.innerHTML = (`Estado: Paraíba`)
             
     } else if (estado == 'PE' || estado == 'pe' || estado == 'Pe' || estado == 'pE') {
         risco = risco + 3
         nomeEstado = 'Pernambuco'
-        lbl_resultado_estado.innerHTML = (`Estado: Pernambuco`)
             
     } else if (estado == 'RN' || estado == 'rn' || estado == 'Rn' || estado == 'rN') {
         risco = risco + 3
         nomeEstado = 'Rio Grande do Norte'
-        lbl_resultado_estado.innerHTML = (`Estado: Rio Grande do Norte`)
             
     } else if (estado == 'SE' || estado == 'se' || estado == 'Se' || estado == 'sE') {
         risco = risco + 3
         nomeEstado = 'Sergipe'
-        lbl_resultado_estado.innerHTML = (`Estado: Sergipe`)
             
     } else {
         txt_estado.value = (``)
@@ -895,64 +840,62 @@ function Calcular(){
         div_mensagem.innerHTML = (`<br> Insira um valor do faturamento válido!`)
     }
 
-    
+
 
     if (risco == 13) {
-        probabilidade = 90
         risco_texto = 'Muito alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
-        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
-        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
-
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: 95%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento}%<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 12) {
-        probabilidade = 85
+        probabilidade = (risco / 13) * 100
         risco_texto = 'Muito alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
-        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
-        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento}%<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 11) {
-        probabilidade = 80
+        probabilidade = (risco / 13) * 100
         risco_texto = 'Muito alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
-        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
-        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento}%<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 10) {
-        probabilidade = 75
+        probabilidade = (risco / 13) * 100
         risco_texto = 'Alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
-        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
-        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento}%<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 9) {
-        probabilidade = 70
+        probabilidade = (risco / 13) * 100
         risco_texto = 'Alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
-        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
-        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento}%<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 8) {
-        probabilidade = 65
+        probabilidade = (risco / 13) * 100
         risco_texto = 'Alto'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
-        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
-        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento}%<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 7) {
-        probabilidade = 60
+        probabilidade = (risco / 13) * 100
         risco_texto = 'Médio'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
-        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
-        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento}%<img src="mais.png" alt="" id="img_mais">`)
 
     } else if (risco == 6) {
-        probabilidade = 55
+        probabilidade = (risco / 13) * 100
         risco_texto = 'Médio'
-        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
-        lbl_resultado_probabilidade.innerHTML = (`Probabilidade de contaminação: ${probabilidade}%`)
-        lbl_resultado_custo.innerHTML = (`Custo total da produção: R$${custo_total.toFixed(2)}`)
+        lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_probabilidade.innerHTML = (`<img src="ponto.png" alt="" id="img_ponto">Probabilidade de contaminação: ${probabilidade.toFixed(2)}%<img src="alerta.png" alt="" id="img_alerta">`)
+        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento}%<img src="mais.png" alt="" id="img_mais">`)
     }
     }
 </script>
