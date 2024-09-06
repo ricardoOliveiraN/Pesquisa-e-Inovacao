@@ -701,8 +701,8 @@ function Calcular(){
     var probabilidade = 0
     var risco_texto = ''
     var custo_inicial = custo * hectare // custo total da produção sem sensor
-    var gastos_fungicida = fungicida * 0.8 // custo novo com fungicidas com sensor
-    var custo_final = custo_inicial - gastos_fungicida // custo final da produção com sensor
+    var gastos_fungicida = fungicida * 0.8 // custo novo de fungicidas com sensor
+    var custo_final = custo_inicial - (fungicida * 0.2) // custo final da produção menos o desconto com sensor
     var ganhos_produtividade = hectare * 6 // novos ganhos em sacas da produtivade(colheita) com sensor
     var ganhos_faturamento = ganhos_produtividade * 150 // novos ganhos da produtivade(colheita) em reais com sensor
     var ganhos_porcentagem_faturamento = (ganhos_faturamento / faturamento) * 100 // A porcentagem do novo faturamento com sensor
@@ -878,28 +878,30 @@ function Calcular(){
     
 
 
-    if (txt_estado.value == 'Resposta inválida!' || txt_estado.value == '' || txt_temperatura.value == 'Resposta inválida!' || txt_temperatura.value == '' || txt_chuva.value == 'Resposta inválida!' || txt_chuva.value == '' || txt_historico.value == 'Resposta inválida!'
-        || txt_historico.value == '') 
+    if (txt_estado.value == 'Resposta inválida!' || txt_estado.value == '' || 
+        txt_temperatura.value == 'Resposta inválida!' || txt_temperatura.value == '' || 
+        txt_chuva.value == 'Resposta inválida!' || txt_chuva.value == '' || 
+        txt_historico.value == 'Resposta inválida!'|| txt_historico.value == '') 
     {
-        div_mensagem.innerHTML = (`<br> Responda todos os campos corretamente!`)
+        alert(`Responda todos os campos corretamente!`)
 
-    } else if (txt_hectare.value == '' || txt_hectare.value <= 0) 
-    {
-        div_mensagem.innerHTML = (`<br> Insira um valor de hectares válido!`)
+    } else if (txt_hectare.value == '' || txt_hectare.value <= 0) {
+
+        alert(`Insira um valor de hectares válido!`)
 
     } else if (txt_custo.value == '' || txt_custo.value <= 0) {
-        div_mensagem.innerHTML = (`<br> Insira um valor de custo válido!`)
+
+        alert(`Insira um valor de custo válido!`)
 
     } else if (txt_fungicida.value < 0) {
-        div_mensagem.innerHTML = (`<br> Insira um valor do custo com fungicida válido!`)
 
-    }  else if (txt_faturamento.value < 0) {
-        div_mensagem.innerHTML = (`<br> Insira um valor do faturamento válido!`)
-    }
+        alert(`Insira um valor do custo com fungicida válido!`)
 
+    } else if (txt_faturamento.value < 0) {
 
+        alert(`Insira um valor do faturamento válido!`)
 
-    if (risco == 13) {
+    } else if (risco == 13) {
         risco_texto = 'Muito alto'
         lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
         lbl_alerta.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
@@ -907,14 +909,26 @@ function Calcular(){
         lbl_alerta2.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
-
-        lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        
+        if (txt_fungicida.value == 0 || txt_fungicida.value == '') {
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: 0%<img src="ponto.png" alt="" id="img_ponto">`)
+        } else if (txt_fungicida.value > 0){
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        }
+        
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+        
+        if (txt_faturamento.value == 0 || txt_faturamento.value == '') {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: $0%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$0<img src="mais.png" alt="" id="img_mais">`)
+        } else if (txt_faturamento.value > 0) {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        }
         
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        
 
     } else if (risco == 12) {
         probabilidade = (risco / 13) * 100
@@ -926,13 +940,25 @@ function Calcular(){
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
-        lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        if (txt_fungicida.value == 0 || txt_fungicida.value == '') {
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: 0%<img src="ponto.png" alt="" id="img_ponto">`)
+        } else if (txt_fungicida.value > 0){
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        }
+        
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+        
+        if (txt_faturamento.value == 0 || txt_faturamento.value == '') {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: $0%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$0<img src="mais.png" alt="" id="img_mais">`)
+        } else if (txt_faturamento.value > 0) {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        }
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        
 
     } else if (risco == 11) {
         probabilidade = (risco / 13) * 100
@@ -944,13 +970,25 @@ function Calcular(){
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
-        lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        if (txt_fungicida.value == 0 || txt_fungicida.value == '') {
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: 0%<img src="ponto.png" alt="" id="img_ponto">`)
+        } else if (txt_fungicida.value > 0){
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        }
+        
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+        
+        if (txt_faturamento.value == 0 || txt_faturamento.value == '') {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: $0%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$0<img src="mais.png" alt="" id="img_mais">`)
+        } else if (txt_faturamento.value > 0) {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        }
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        
 
     } else if (risco == 10) {
         probabilidade = (risco / 13) * 100
@@ -962,13 +1000,25 @@ function Calcular(){
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
-        lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        if (txt_fungicida.value == 0 || txt_fungicida.value == '') {
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: 0%<img src="ponto.png" alt="" id="img_ponto">`)
+        } else if (txt_fungicida.value > 0){
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        }
+        
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+        
+        if (txt_faturamento.value == 0 || txt_faturamento.value == '') {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: $0%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$0<img src="mais.png" alt="" id="img_mais">`)
+        } else if (txt_faturamento.value > 0) {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        }
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        
 
     } else if (risco == 9) {
         probabilidade = (risco / 13) * 100
@@ -980,13 +1030,25 @@ function Calcular(){
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
-        lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        if (txt_fungicida.value == 0 || txt_fungicida.value == '') {
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: 0%<img src="ponto.png" alt="" id="img_ponto">`)
+        } else if (txt_fungicida.value > 0){
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        }
+        
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+        
+        if (txt_faturamento.value == 0 || txt_faturamento.value == '') {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: $0%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$0<img src="mais.png" alt="" id="img_mais">`)
+        } else if (txt_faturamento.value > 0) {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        }
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        
 
     } else if (risco == 8) {
         probabilidade = (risco / 13) * 100
@@ -998,13 +1060,25 @@ function Calcular(){
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
-        lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        if (txt_fungicida.value == 0 || txt_fungicida.value == '') {
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: 0%<img src="ponto.png" alt="" id="img_ponto">`)
+        } else if (txt_fungicida.value > 0){
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        }
+        
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+        
+        if (txt_faturamento.value == 0 || txt_faturamento.value == '') {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: $0%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$0<img src="mais.png" alt="" id="img_mais">`)
+        } else if (txt_faturamento.value > 0) {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        }
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        
 
     } else if (risco == 7) {
         probabilidade = (risco / 13) * 100
@@ -1016,13 +1090,25 @@ function Calcular(){
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
-        lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        if (txt_fungicida.value == 0 || txt_fungicida.value == '') {
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: 0%<img src="ponto.png" alt="" id="img_ponto">`)
+        } else if (txt_fungicida.value > 0){
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        }
+        
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+        
+        if (txt_faturamento.value == 0 || txt_faturamento.value == '') {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: $0%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$0<img src="mais.png" alt="" id="img_mais">`)
+        } else if (txt_faturamento.value > 0) {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        }
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        
 
     } else if (risco == 6) {
         probabilidade = (risco / 13) * 100
@@ -1034,13 +1120,25 @@ function Calcular(){
 
         lbl_ganhos.innerHTML = (`<img src="seta_ganhos.png" alt="" id="img_ganhos">GANHOS COM O NOSSO PROJETO<img src="seta_ganhos.png" alt="" id="img_ganhos">`)
         
-        lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        if (txt_fungicida.value == 0 || txt_fungicida.value == '') {
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: 0%<img src="ponto.png" alt="" id="img_ponto">`)
+        } else if (txt_fungicida.value > 0){
+            lbl_resultado_fungicida.innerHTML = (`Gastos com fungicida: -20%<img src="seta_baixo.png" alt="" id="img_seta_baixo"><img src="ponto.png" alt="" id="img_ponto">`)
+        }
+        
         lbl_resultado_produtividade.innerHTML = (`Produtividade: 10%<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+        
+        if (txt_faturamento.value == 0 || txt_faturamento.value == '') {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: $0%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$0<img src="mais.png" alt="" id="img_mais">`)
+        } else if (txt_faturamento.value > 0) {
+            lbl_resultado_faturamento.innerHTML = (`Faturamento: ${ganhos_porcentagem_faturamento.toFixed(2)}%<img src="mais.png" alt="" id="img_mais">`)
+            lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        }
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        lbl_resultado_ganhos_faturamento.innerHTML = (`R$${novo_faturamento.toFixed(2)}<img src="mais.png" alt="" id="img_mais">`)
+        
     }
     }
 </script>
