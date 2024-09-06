@@ -17,6 +17,7 @@
             margin: 0;
             padding: 0;
             font-family: "Roboto", sans-serif;
+            background-color: #100d28;
         }        
 
         .div_fundo {
@@ -43,9 +44,10 @@
         }
 
         .div_menu {
-            border: 1px solid;
+            border: 3px solid;
+            border-color: white;
             border-radius: 30px;
-            height: 470px;
+            height: 480px;
             background-color: #7ed957;
             width: 800px;
             position: relative;
@@ -62,7 +64,7 @@
             border-radius: 30px;
             margin-top: 10px;
             margin-bottom: -10px;
-            margin-left: -100px;
+            margin-left: -50px;
         }    
 
         #img_logo {
@@ -76,7 +78,7 @@
             justify-content: center;
             display: flex;
             font-size: 30px;
-            margin-left: 50px;
+            margin-left: 70px;
         }
 
         .div_questionario {
@@ -380,14 +382,39 @@
         }
 
         .div_calcular {
-            width: 230px;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            width: 700px;
             height: 80px;
-            margin-left: 300px;
-            margin-top: -45px;
+            margin-left: 70px;
+            margin-top: -50px;
+        }
+
+        .div_sacas {
+            display: block;
+            align-items: center;
+            justify-content: center;
+            margin-right: 110px;
+        }
+
+        #lbl_sacas{
+            font-weight: 410;
+            margin-bottom: 0;
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        #txt_sacas {
+            height: 30px;
+            border-radius: 7px;
+            font-size: 20px;
+            width: 255px;
+            margin-bottom: 0;
         }
 
         #btn_calcular {
-            width: 210px;
+            width: 260px;
             height: 60px;
             border-radius: 7px;
             font-size: 20px;
@@ -414,7 +441,7 @@
             width: 800px;
             height: 40px;
             margin-left: 27px;
-            margin-top: 1px;
+            margin-top: 17px;
             border-radius: 15px;
             border-color: #7ed957;
             background-color: white;
@@ -560,13 +587,36 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }    
+        }   
+        
+        .div_resultado5 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid;
+            width: 800px;
+            height: 40px;
+            margin-left: 27px;
+            margin-top: -4px;
+            border-radius: 15px;
+            border-color: #7ed957;
+            background-color: #09680a;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #lbl_lucro {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
     </style>
 </head>
 <body>
     <div class="div_fundo">
-        <img src="plantacao.jpg" alt="" id="img_fundo">
+        <img src="logoteste.png" alt="" id="img_fundo">
 
             <div class="div_menu">
 
@@ -648,6 +698,11 @@
                     </div>
 
                     <div class="div_calcular">
+                        <div class="div_sacas">
+                            <p id="lbl_sacas">Sacas coletadas /hectare:</p>
+                            <input type="number" id="txt_sacas">
+                        </div>
+
                         <button onclick="Calcular()" id="btn_calcular">Calcular</button>
                     </div>
 
@@ -674,9 +729,11 @@
                         <p id="lbl_resultado_ganhos_faturamento"></p>
                     </div>
 
-                </div>
+                    <div class="div_resultado5">
+                        <p id="lbl_lucro"></p>
+                    </div>
 
-                <div id="div_mensagem"></div>
+                </div>
                 
             </div>
 
@@ -695,6 +752,7 @@ function Calcular(){
     var historico = (txt_historico.value)
     var fungicida = Number(txt_fungicida.value)
     var faturamento = Number(txt_faturamento.value)
+    var saca = Number(txt_sacas.value)
     var risco = 0
     var nomeEstado = ''
     var resposta_historico = '' 
@@ -703,7 +761,8 @@ function Calcular(){
     var custo_inicial = custo * hectare // custo total da produção sem sensor
     var gastos_fungicida = fungicida * 0.8 // custo novo de fungicidas com sensor
     var custo_final = custo_inicial - (fungicida * 0.2) // custo final da produção menos o desconto com sensor
-    var ganhos_produtividade = hectare * 6 // novos ganhos em sacas da produtivade(colheita) com sensor
+    var ganhos_saca = saca * 0.1
+    var ganhos_produtividade = hectare * ganhos_saca // novos ganhos em sacas da produtivade(colheita) com sensor
     var ganhos_faturamento = ganhos_produtividade * 150 // novos ganhos da produtivade(colheita) em reais com sensor
     var ganhos_porcentagem_faturamento = (ganhos_faturamento / faturamento) * 100 // A porcentagem do novo faturamento com sensor
     var novo_faturamento = faturamento + ganhos_faturamento // novo faturamento total sem descontos com sensor
@@ -928,7 +987,8 @@ function Calcular(){
         
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        
+        lbl_lucro.innerHTML = (`LUCRO: R$${lucro_sensor.toFixed(2)}`)
+
 
     } else if (risco == 12) {
         probabilidade = (risco / 13) * 100
@@ -958,7 +1018,8 @@ function Calcular(){
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        
+        lbl_lucro.innerHTML = (`LUCRO: R$${lucro_sensor.toFixed(2)}`)
+
 
     } else if (risco == 11) {
         probabilidade = (risco / 13) * 100
@@ -988,7 +1049,8 @@ function Calcular(){
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        
+        lbl_lucro.innerHTML = (`LUCRO: R$${lucro_sensor.toFixed(2)}`)
+
 
     } else if (risco == 10) {
         probabilidade = (risco / 13) * 100
@@ -1018,7 +1080,8 @@ function Calcular(){
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        
+        lbl_lucro.innerHTML = (`LUCRO: R$${lucro_sensor.toFixed(2)}`)
+
 
     } else if (risco == 9) {
         probabilidade = (risco / 13) * 100
@@ -1048,7 +1111,8 @@ function Calcular(){
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        
+        lbl_lucro.innerHTML = (`LUCRO: R$${lucro_sensor.toFixed(2)}`)
+
 
     } else if (risco == 8) {
         probabilidade = (risco / 13) * 100
@@ -1078,7 +1142,8 @@ function Calcular(){
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        
+        lbl_lucro.innerHTML = (`LUCRO: R$${lucro_sensor.toFixed(2)}`)
+
 
     } else if (risco == 7) {
         probabilidade = (risco / 13) * 100
@@ -1108,7 +1173,8 @@ function Calcular(){
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        
+        lbl_lucro.innerHTML = (`LUCRO: R$${lucro_sensor.toFixed(2)}`)
+
 
     } else if (risco == 6) {
         probabilidade = (risco / 13) * 100
@@ -1138,7 +1204,7 @@ function Calcular(){
 
         lbl_resultado_ganhos_fungicida.innerHTML = (`R$${gastos_fungicida.toFixed(2)}<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
-        
+        lbl_lucro.innerHTML = (`LUCRO: R$${lucro_sensor.toFixed(2)}`)
     }
     }
 </script>
