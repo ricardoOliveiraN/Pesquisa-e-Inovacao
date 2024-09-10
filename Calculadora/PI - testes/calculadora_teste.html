@@ -52,7 +52,8 @@
         var risco = 0
         var nomeEstado = ''
         var resposta_historico = '' 
-        var probabilidade = 0
+        var probabilidade = 0;
+        var nova_probabilidade = 0;
         var risco_texto = ''
         var custo_inicial = custo * hectare // custo total da produção sem sensor
         var gastos_fungicida = fungicida * 0.8 // custo novo de fungicidas com sensor
@@ -246,60 +247,12 @@
             risco = risco + 1
 
         }
-        if (estado == ''){
-
-            alert(`Responda todos os campos corretamente!`)
-
-        } 
-        if (temperatura == ''){
-
-            alert(`Responda todos os campos corretamente!`)
-
-        }  
-        if (chuva == ''){
-
-            alert(`Responda todos os campos corretamente!`)
-
-        } 
-        if (historico == ''){
-
-            alert(`Responda todos os campos corretamente!`)
-
-        } 
-        if (hectare == ''){
-
-            alert(`Insira um valor de hectares válido!`) 
-
-        }
+         
         
-        if (hectare <= 0) {
-
-            alert(`Insira um valor de hectares válido!`)
-
-        }
-        if (custo == ''){
-
-            alert(`Insira um valor de custo válido!`)
-
-        }
-        if (custo <= 0) {
-
-            alert(`Insira um valor de custo válido!`)
-
-        }
-        if (fungicida < 0) {
-
-            alert(`Insira um valor do custo com fungicida válido!`)
-
-        }
-        if (temperatura < 0) {
-
-            alert(`Insira um valor do faturamento válido!`)
-        }
         if (risco == 13) {
-
+            probabilidade = (risco / 13) * 100
             risco_texto = 'Muito alto'
-
+            nova_probabilidade = probabilidade - 15
             mensagem = `<h1> SEM A MOUM SOYA: </h1>
         
             Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
@@ -311,13 +264,13 @@
             
             <hr>
             <h1> COM A MOUM SOYA: </h1>
-
-            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-            LUCRO: R$ ${lucro_sensor}. <br>
+            Nova probabilidade: <a style="color: green;">80%</a>.<br>
+            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+            Ganhos com a nova Produtividade: R$ <a style="color: green;">${ganhos_faturamento}</a>. <br>
+            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}</a>. <br>
 
             <hr>
 
@@ -333,17 +286,18 @@
                 Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
                 Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
                 Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
 
                 <hr>
                 <h1> COM A MOUM SOYA: </h1>
-
-                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+                
+                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
 
                 <hr>
 
@@ -356,6 +310,7 @@
         if (risco == 12) {
             probabilidade = (risco / 13) * 100
             risco_texto = 'Muito alto'
+            nova_probabilidade = probabilidade - 15
 
             mensagem = `<h1> SEM A MOUM SOYA: </h1>
         
@@ -364,17 +319,18 @@
             Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
             Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
             Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
             
             <hr>
             <h1> COM A MOUM SOYA: </h1>
-
-            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-            LUCRO: R$ ${lucro_sensor}. <br>
+            
+            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+            Faturamento Total: R$  <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+            Gasto Total: R$  <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}</a>. <br>
 
             <hr>
 
@@ -384,23 +340,24 @@
             if (lucro_sensor <= 0){
 
                 mensagem = `<h1> SEM A MOUM SOYA: </h1>
-
+      
                 Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
                 Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
                 Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
                 Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
                 Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
 
                 <hr>
                 <h1> COM A MOUM SOYA: </h1>
-
-                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+                
+                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+                Ganhos com a nova Produtividade: R$  <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
 
                 <hr>
 
@@ -413,6 +370,7 @@
         if (risco == 11) {
             probabilidade = (risco / 13) * 100
             risco_texto = 'Muito alto'
+            nova_probabilidade = probabilidade - 15
             mensagem = `<h1> SEM A MOUM SOYA: </h1>
         
             Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
@@ -420,17 +378,18 @@
             Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
             Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
             Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
             
             <hr>
             <h1> COM A MOUM SOYA: </h1>
-
-            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-            LUCRO: R$ ${lucro_sensor}. <br>
+            
+            Nova probabilidade: <a style="color: red;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+            Produtividade: <a style="color: red;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+            Ganhos com a nova Produtividade: R$ <a style="color: red;">  ${ganhos_faturamento}</a>. <br>
+            Faturamento Total: R$ <a style="color: red;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+            Gasto com Fungicida: R$ <a style="color: red;"> ${gastos_fungicida} (- 20%)</a>. <br>
+            Gasto Total: R$ <a style="color: red;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+            LUCRO: R$ <a style="color: red;">${lucro_sensor}</a>. <br>
 
             <hr>
 
@@ -446,17 +405,18 @@
                 Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
                 Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
                 Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
 
                 <hr>
                 <h1> COM A MOUM SOYA: </h1>
-
-                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+                
+                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
 
                 <hr>
 
@@ -469,6 +429,7 @@
         if (risco == 10) {
             probabilidade = (risco / 13) * 100
             risco_texto = 'Alto'
+            nova_probabilidade = probabilidade - 15
             mensagem = `<h1> SEM A MOUM SOYA: </h1>
         
             Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
@@ -476,17 +437,18 @@
             Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
             Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
             Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
             
             <hr>
             <h1> COM A MOUM SOYA: </h1>
-
-            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-            LUCRO: R$ ${lucro_sensor}. <br>
+            
+            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}</a>. <br>
 
             <hr>
 
@@ -502,17 +464,18 @@
                 Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
                 Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
                 Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
 
                 <hr>
                 <h1> COM A MOUM SOYA: </h1>
-
-                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+                
+                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
 
                 <hr>
 
@@ -525,6 +488,7 @@
         if (risco == 9) {
             probabilidade = (risco / 13) * 100
             risco_texto = 'Alto'
+            nova_probabilidade = probabilidade - 15
             mensagem = `<h1> SEM A MOUM SOYA: </h1>
         
             Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
@@ -532,17 +496,18 @@
             Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
             Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
             Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
             
             <hr>
             <h1> COM A MOUM SOYA: </h1>
-
-            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-            LUCRO: R$ ${lucro_sensor}. <br>
+            
+            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%. <br>
+            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}. <br>
+            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%). <br>
+            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}. <br>
 
             <hr>
 
@@ -558,17 +523,18 @@
                 Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
                 Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
                 Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
 
                 <hr>
                 <h1> COM A MOUM SOYA: </h1>
-
-                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+                
+                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+                LUCRO: R<a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
 
                 <hr>
 
@@ -581,6 +547,7 @@
         if (risco == 8) {
             probabilidade = (risco / 13) * 100
             risco_texto = 'Alto'
+            nova_probabilidade = probabilidade - 15
             mensagem = `<h1> SEM A MOUM SOYA: </h1>
         
             Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
@@ -588,17 +555,18 @@
             Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
             Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
             Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
             
             <hr>
             <h1> COM A MOUM SOYA: </h1>
-
-            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-            LUCRO: R$ ${lucro_sensor}. <br>
+            
+            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}</a>. <br>
 
             <hr>
 
@@ -614,17 +582,18 @@
                 Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
                 Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
                 Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
 
                 <hr>
                 <h1> COM A MOUM SOYA: </h1>
-
-                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+                
+                Nova probabilidade: $<a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
 
                 <hr>
 
@@ -637,6 +606,7 @@
         if (risco == 7) {
             probabilidade = (risco / 13) * 100
             risco_texto = 'Médio'
+            nova_probabilidade = probabilidade - 30
             mensagem = `<h1> SEM A MOUM SOYA: </h1>
         
             Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
@@ -644,17 +614,18 @@
             Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
             Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
             Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
             
             <hr>
             <h1> COM A MOUM SOYA: </h1>
-
-            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-            LUCRO: R$ ${lucro_sensor}. <br>
+            
+            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+            LUCRO: R$ <a style="color: green;"><a style="color: green;"> ${lucro_sensor}</a>. <br>
 
             <hr>
 
@@ -670,17 +641,18 @@
                 Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
                 Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
                 Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
 
                 <hr>
                 <h1> COM A MOUM SOYA: </h1>
-
-                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+                
+                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
 
                 <hr>
 
@@ -693,6 +665,7 @@
         if (risco == 6) {
             probabilidade = (risco / 13) * 100
             risco_texto = 'Médio'
+            nova_probabilidade = probabilidade - 30
             mensagem = `<h1> SEM A MOUM SOYA: </h1>
         
             Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
@@ -700,22 +673,25 @@
             Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
             Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
             Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
             
             <hr>
             <h1> COM A MOUM SOYA: </h1>
-
-            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-            LUCRO: R$ ${lucro_sensor}. <br>
+            
+            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}</a>. <br>
 
             <hr>
 
-            <button onclick="NovaOperacao()">Refazer Operação</button>
-        `   
+            <button onclick="NovaOperacao()">Refazer Operação</button>`
+    
+
+          
             if (lucro_sensor <= 0){
 
                 mensagem = `<h1> SEM A MOUM SOYA: </h1>
@@ -725,17 +701,18 @@
                 Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
                 Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
                 Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
 
                 <hr>
                 <h1> COM A MOUM SOYA: </h1>
-
-                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+                
+                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
+                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
+                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
+                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
+                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
+                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
+                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
 
                 <hr>
 
@@ -806,9 +783,22 @@
 
         div_mensagem.innerHTML = mensagem
 
+    //  if (risco_texto == 'Muito alto') {
+    //     nova_probabilidade = probabilidade * (85 / 100)
+    //     div_mensagem.innerHTML = `${nova_probabilidade}`
+    //  }
+
+    //  if (risco_texto == 'Alto') {
+    //     nova_probabilidade = probabilidade * (85 / 100)
+    //     div_mensagem.innerHTML = `${nova_probabilidade}`
+    //  }
+
+    //  if (risco_texto == 'Médio') {
+    //     nova_probabilidade = probabilidade * (70 / 100)
+    //     div_mensagem.innerHTML = `${nova_probabilidade}`
+    //  }
 
     }
-
-
+    
 
 </script>
