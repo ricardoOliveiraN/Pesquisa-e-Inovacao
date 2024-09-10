@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
+
 <body>
-    <div id="div_mensagem"></div>
-    
-    
+   
+    <!-- <div id="div_mensagem" style="background-color: #100d28; opacity: 0.9; color: white;"></div>  -->
+     <div id="div_mensagem" style="
+        background-size: cover;
+        color: white;
+
+     background-image: url(imagens/NOVO.png);"></div>
+
+     <!-- criar texto para resposta mais completa deixando o cálculo exposto para ser aproveitado; 
+      subir logo;
+      deixar o título verde (palheta de cores usada no logo);
+      resultado mais visível (negrito e cor palheta); -->
+   
 
 </body>
 </html>
@@ -16,7 +28,7 @@
 
     mensagem = `
     
-    <h1><b id="txt_simulador">Simulador Financeiro</b></h1>
+    <h1><b style="color: #7ed957;" id="txt_simulador">Simulador Financeiro</b></h1>
     <h4>Hectares: <input type="number" id="txt_hectare"></h4>                  
     <h4>Custo por hectare: R$<input type="number" id="txt_custo"></h4>
     <h4>Faturamento mensal: R$<input type="number" id="txt_faturamento"></h4>
@@ -31,7 +43,7 @@
     <h4>Sacas coletadas por hectare: <input type="number" id="txt_sacas"></h4>
                         
 
-    <button onclick="Calcular()" id="btn_calcular">Calcular</button>
+    <button onclick="Calcular()" id="btn_calcular">Calcular</button> 
 
     `;
 
@@ -782,21 +794,6 @@
         `;
 
         div_mensagem.innerHTML = mensagem
-
-    //  if (risco_texto == 'Muito alto') {
-    //     nova_probabilidade = probabilidade * (85 / 100)
-    //     div_mensagem.innerHTML = `${nova_probabilidade}`
-    //  }
-
-    //  if (risco_texto == 'Alto') {
-    //     nova_probabilidade = probabilidade * (85 / 100)
-    //     div_mensagem.innerHTML = `${nova_probabilidade}`
-    //  }
-
-    //  if (risco_texto == 'Médio') {
-    //     nova_probabilidade = probabilidade * (70 / 100)
-    //     div_mensagem.innerHTML = `${nova_probabilidade}`
-    //  }
 
     }
     
