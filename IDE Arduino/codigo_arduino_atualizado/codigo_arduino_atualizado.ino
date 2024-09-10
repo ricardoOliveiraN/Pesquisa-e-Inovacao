@@ -16,6 +16,7 @@ void setup() {
 
 void loop() {
   float umidade = sensorDHT.readHumidity();
+  int umimax = 70;
 
   if (isnan(umidade)){
 
@@ -23,7 +24,16 @@ void loop() {
 
   } else{
 
-    Serial.println(umidade);
+    
+    Serial.print("Umidade Máxima:"); 
+    Serial.print(umimax);
+    Serial.print(" ");
+    Serial.print("Umidade Atual:");
+    Serial.print(umidade);
+    Serial.println(" ");
+
+    
+    
 
     delay(1000);
 
