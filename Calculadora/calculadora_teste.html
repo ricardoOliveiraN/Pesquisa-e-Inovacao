@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div_mensagem"></div>
+    
+    
+
+</body>
+</html>
+<script>
+
+    mensagem = `
+    
+    <h1><b id="txt_simulador">Simulador Financeiro</b></h1>
+    <h4>Hectares: <input type="number" id="txt_hectare"></h4>                  
+    <h4>Custo por hectare: R$<input type="number" id="txt_custo"></h4>
+    <h4>Faturamento mensal: R$<input type="number" id="txt_faturamento"></h4>
+    <h4>Custo com fungicidas por mês: R$<input type="number" id="txt_fungicida"></h4>
+    <h4> Sigla do Estado <u>(ex: SP/RJ)</u>:<input type="text" id="txt_estado"></h4>
+    <h4>Volume da chuva <u>(pouca, moderada, muita)</u>: <input type="text" id="txt_chuva"></h4>                                              
+    <h4>A produção já foi contaminada <u>(sim/não)</u>:<input type="text" id="txt_historico"></h4>
+                        
+
+                        
+    <h4>Temperatura do ambiente <u>(muito frio, frio, moderado, quente, muito quente)</u>:<input type="text" id="txt_temperatura"></h4>
+    <h4>Sacas coletadas por hectare: <input type="number" id="txt_sacas"></h4>
+                        
+
+    <button onclick="Calcular()" id="btn_calcular">Calcular</button>
+
+    `;
+
+    div_mensagem.innerHTML = mensagem
+
+    
+    function Calcular(){
+        var hectare = Number(txt_hectare.value)
+        var custo = Number(txt_custo.value)
+        var estado = (txt_estado.value)
+        var temperatura = (txt_temperatura.value)
+        var chuva = (txt_chuva.value)
+        var historico = (txt_historico.value)
+        var fungicida = Number(txt_fungicida.value)
+        var faturamento = Number(txt_faturamento.value)
+        var saca = Number(txt_sacas.value)
+        var SacaHectarInicio = saca * hectare
+        var risco = 0
+        var nomeEstado = ''
+        var resposta_historico = '' 
+        var probabilidade = 0
+        var risco_texto = ''
+        var custo_inicial = custo * hectare // custo total da produção sem sensor
+        var gastos_fungicida = fungicida * 0.8 // custo novo de fungicidas com sensor
+        var custo_final = custo_inicial - (fungicida * 0.2) // custo final da produção menos o desconto com sensor
+        var cuto_final_porcentagem = ((custo_inicial - custo_final) / custo_inicial) * 100;
+        var ganhos_saca = saca * 0.1
+        var ganhos_produtividade = hectare * ganhos_saca // novos ganhos em sacas da produtivade(colheita) com sensor
+        var ganhos_faturamento = ganhos_produtividade * 150 // novos ganhos da produtivade(colheita) em reais com sensor
+        var ganhos_porcentagem_faturamento = (ganhos_faturamento / faturamento) * 100 // A porcentagem do novo faturamento com sensor
+        var novo_faturamento = faturamento + ganhos_faturamento // novo faturamento total sem descontos com sensor
+        var lucro_sensor = novo_faturamento - custo_final // lucro final com sensor
+        var PorcentagemProdutividade = 10
+        var lucro_inicial = faturamento - custo_inicial
+
+        
+        if (estado == 'PR'){
+            risco = risco + 5
+            nomeEstado = 'Paraná'
+
+        }
+        if (estado == 'SC'){
+            risco = risco + 5
+            nomeEstado = 'Santa Catarina'
+                
+        } 
+        if (estado == 'RS' ) {
+            risco = risco + 5
+            nomeEstado = 'Rio Grande do Sul'
+                
+        }
+        if (estado == 'MT') {
+            risco = risco + 5
+            nomeEstado = 'Mato Grosso'
+
+        } 
+        if (estado == 'MS') {
+            risco = risco + 5
+            nomeEstado = 'Mato Grosso do Sul'
+
+        } 
+        if (estado == 'GO') {
+            risco = risco + 5
+            nomeEstado = 'Goiás'
+
+        } 
+        if (estado == 'DF') {
+            risco = risco + 5
+            nomeEstado = 'Distrito Federal'
+
+        } 
+        if (estado == 'SP') {
+            risco = risco + 5
+            nomeEstado = 'São Paulo'
+
+        }
+        if (estado == 'MG') {
+            risco = risco + 3
+            nomeEstado = 'Minas Gerais'
+                
+        } 
+        if (estado == 'ES') {
+            risco = risco + 3
+            nomeEstado = 'Espirito Santo'
+                
+        } 
+        if (estado == 'RJ') {
+            risco = risco + 3
+            nomeEstado = 'Rio de Janeiro'
+                
+        } 
+        if (estado == 'RO') {
+            risco = risco + 3
+            nomeEstado = 'Rondônia'
+                
+        } 
+        if (estado == 'TO') {
+            risco = risco + 3
+            nomeEstado = 'Tocantins'
+                
+        } 
+        if (estado == 'AC') {
+            risco = risco + 3
+            nomeEstado = 'Acre'
+                
+        } 
+        if (estado == 'AP') {
+            risco = risco + 3
+            nomeEstado = 'Amapá'
+                
+        }
+        if (estado == 'AM') {
+            risco = risco + 3
+            nomeEstado = 'Amazonas'
+                
+        } 
+        if (estado == 'PA') {
+            risco = risco + 3
+            nomeEstado = 'Pará'
+                
+        } 
+        if (estado == 'RR') {
+            risco = risco + 3
+            nomeEstado = 'Roraima'
+                
+        } 
+        if (estado == 'BA') {
+            risco = risco + 3
+            nomeEstado = 'Bahia'
+                
+        }
+        if (estado == 'MA') {
+            risco = risco + 3
+            nomeEstado = 'Maranhão'
+                
+        } 
+        if (estado == 'PI') {
+            risco = risco + 3
+            nomeEstado = 'Piauí'
+
+        } 
+        if (estado == 'AL') {
+            risco = risco + 3
+            nomeEstado = 'Alagoas'
+                
+        } 
+        if (estado == 'CE') {
+            risco = risco + 3
+            nomeEstado = 'Ceará'
+                
+        }
+        if (estado == 'PB') {
+            risco = risco + 3
+            nomeEstado = 'Paraíba'
+                
+        } 
+        if (estado == 'PE') {
+            risco = risco + 3
+            nomeEstado = 'Pernambuco'
+                
+        } 
+        if (estado == 'RN') {
+            risco = risco + 3
+            nomeEstado = 'Rio Grande do Norte'
+                
+        } 
+        if (estado == 'SE') {
+            risco = risco + 3
+            nomeEstado = 'Sergipe'
+                
+        } 
+        
+        if (historico == 'sim') {
+            risco = risco + 2
+            resposta_historico = 'Sim'
+
+        } 
+        if (historico == 'não') {
+            risco = risco + 1
+            resposta_historico = 'Não'
+
+        } 
+        
+        if(temperatura == 'muito frio') {
+        risco = risco + 3
+        } 
+        if(temperatura == 'frio') {
+            risco = risco + 2
+
+        } 
+        if (temperatura == 'moderado') {
+            risco = risco + 1
+
+        } 
+        if(temperatura == 'quente') {
+            risco = risco + 2
+
+        } 
+        if(temperatura == 'muito quente') {
+            risco = risco + 3
+
+        }
+        if( chuva == 'muita'){
+            risco = risco + 3
+
+        }
+        if(chuva == 'moderada'){
+            risco = risco + 2
+
+        }
+        if (chuva == 'pouca'){
+            risco = risco + 1
+
+        }
+        if (estado == ''){
+
+            alert(`Responda todos os campos corretamente!`)
+
+        } 
+        if (temperatura == ''){
+
+            alert(`Responda todos os campos corretamente!`)
+
+        }  
+        if (chuva == ''){
+
+            alert(`Responda todos os campos corretamente!`)
+
+        } 
+        if (historico == ''){
+
+            alert(`Responda todos os campos corretamente!`)
+
+        } 
+        if (hectare == ''){
+
+            alert(`Insira um valor de hectares válido!`) 
+
+        }
+        
+        if (hectare <= 0) {
+
+            alert(`Insira um valor de hectares válido!`)
+
+        }
+        if (custo == ''){
+
+            alert(`Insira um valor de custo válido!`)
+
+        }
+        if (custo <= 0) {
+
+            alert(`Insira um valor de custo válido!`)
+
+        }
+        if (fungicida < 0) {
+
+            alert(`Insira um valor do custo com fungicida válido!`)
+
+        }
+        if (temperatura < 0) {
+
+            alert(`Insira um valor do faturamento válido!`)
+        }
+        if (risco == 13) {
+
+            risco_texto = 'Muito alto'
+
+            mensagem = `<h1> SEM A MOUM SOYA: </h1>
+        
+            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+            Probabilidade de Contaminação: <a style="color: red;">95%</a> 
+            
+            <hr>
+            <h1> COM A MOUM SOYA: </h1>
+
+            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+            LUCRO: R$ ${lucro_sensor}. <br>
+
+            <hr>
+
+            <button onclick="NovaOperacao()">Refazer Operação</button>
+        `
+        
+            if (lucro_sensor <= 0){
+
+                mensagem = `<h1> SEM A MOUM SOYA: </h1>
+
+                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+
+                <hr>
+                <h1> COM A MOUM SOYA: </h1>
+
+                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+
+                <hr>
+
+                <button onclick="NovaOperacao()">Refazer Operação</button>
+                `   
+
+            }
+
+        }
+        if (risco == 12) {
+            probabilidade = (risco / 13) * 100
+            risco_texto = 'Muito alto'
+
+            mensagem = `<h1> SEM A MOUM SOYA: </h1>
+        
+            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            
+            <hr>
+            <h1> COM A MOUM SOYA: </h1>
+
+            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+            LUCRO: R$ ${lucro_sensor}. <br>
+
+            <hr>
+
+            <button onclick="NovaOperacao()">Refazer Operação</button>
+        `
+        
+            if (lucro_sensor <= 0){
+
+                mensagem = `<h1> SEM A MOUM SOYA: </h1>
+
+                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+
+                <hr>
+                <h1> COM A MOUM SOYA: </h1>
+
+                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+
+                <hr>
+
+                <button onclick="NovaOperacao()">Refazer Operação</button>
+                `   
+
+            }
+
+        }
+        if (risco == 11) {
+            probabilidade = (risco / 13) * 100
+            risco_texto = 'Muito alto'
+            mensagem = `<h1> SEM A MOUM SOYA: </h1>
+        
+            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            
+            <hr>
+            <h1> COM A MOUM SOYA: </h1>
+
+            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+            LUCRO: R$ ${lucro_sensor}. <br>
+
+            <hr>
+
+            <button onclick="NovaOperacao()">Refazer Operação</button>
+        `
+        
+            if (lucro_sensor <= 0){
+
+                mensagem = `<h1> SEM A MOUM SOYA: </h1>
+
+                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+
+                <hr>
+                <h1> COM A MOUM SOYA: </h1>
+
+                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+
+                <hr>
+
+                <button onclick="NovaOperacao()">Refazer Operação</button>
+                `   
+
+            }
+    
+        }   
+        if (risco == 10) {
+            probabilidade = (risco / 13) * 100
+            risco_texto = 'Alto'
+            mensagem = `<h1> SEM A MOUM SOYA: </h1>
+        
+            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            
+            <hr>
+            <h1> COM A MOUM SOYA: </h1>
+
+            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+            LUCRO: R$ ${lucro_sensor}. <br>
+
+            <hr>
+
+            <button onclick="NovaOperacao()">Refazer Operação</button>
+        `   
+       
+             if (lucro_sensor <= 0){
+
+                mensagem = `<h1> SEM A MOUM SOYA: </h1>
+
+                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+
+                <hr>
+                <h1> COM A MOUM SOYA: </h1>
+
+                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+
+                <hr>
+
+                <button onclick="NovaOperacao()">Refazer Operação</button>
+                `   
+
+            }  
+
+        }
+        if (risco == 9) {
+            probabilidade = (risco / 13) * 100
+            risco_texto = 'Alto'
+            mensagem = `<h1> SEM A MOUM SOYA: </h1>
+        
+            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            
+            <hr>
+            <h1> COM A MOUM SOYA: </h1>
+
+            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+            LUCRO: R$ ${lucro_sensor}. <br>
+
+            <hr>
+
+            <button onclick="NovaOperacao()">Refazer Operação</button>
+        `   
+
+            if (lucro_sensor <= 0){
+
+                mensagem = `<h1> SEM A MOUM SOYA: </h1>
+
+                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+
+                <hr>
+                <h1> COM A MOUM SOYA: </h1>
+
+                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+
+                <hr>
+
+                <button onclick="NovaOperacao()">Refazer Operação</button>
+                `   
+
+            }
+            
+        }
+        if (risco == 8) {
+            probabilidade = (risco / 13) * 100
+            risco_texto = 'Alto'
+            mensagem = `<h1> SEM A MOUM SOYA: </h1>
+        
+            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            
+            <hr>
+            <h1> COM A MOUM SOYA: </h1>
+
+            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+            LUCRO: R$ ${lucro_sensor}. <br>
+
+            <hr>
+
+            <button onclick="NovaOperacao()">Refazer Operação</button>
+        `   
+
+            if (lucro_sensor <= 0){
+
+                mensagem = `<h1> SEM A MOUM SOYA: </h1>
+
+                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+
+                <hr>
+                <h1> COM A MOUM SOYA: </h1>
+
+                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+
+                <hr>
+
+                <button onclick="NovaOperacao()">Refazer Operação</button>
+                `   
+
+            }
+
+        }
+        if (risco == 7) {
+            probabilidade = (risco / 13) * 100
+            risco_texto = 'Médio'
+            mensagem = `<h1> SEM A MOUM SOYA: </h1>
+        
+            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            
+            <hr>
+            <h1> COM A MOUM SOYA: </h1>
+
+            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+            LUCRO: R$ ${lucro_sensor}. <br>
+
+            <hr>
+
+            <button onclick="NovaOperacao()">Refazer Operação</button>
+        `   
+            
+            if (lucro_sensor <= 0){
+
+                mensagem = `<h1> SEM A MOUM SOYA: </h1>
+
+                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+
+                <hr>
+                <h1> COM A MOUM SOYA: </h1>
+
+                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+
+                <hr>
+
+                <button onclick="NovaOperacao()">Refazer Operação</button>
+                `   
+
+            }    
+
+        }
+        if (risco == 6) {
+            probabilidade = (risco / 13) * 100
+            risco_texto = 'Médio'
+            mensagem = `<h1> SEM A MOUM SOYA: </h1>
+        
+            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+            Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            
+            <hr>
+            <h1> COM A MOUM SOYA: </h1>
+
+            Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+            Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+            Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+            Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+            Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+            LUCRO: R$ ${lucro_sensor}. <br>
+
+            <hr>
+
+            <button onclick="NovaOperacao()">Refazer Operação</button>
+        `   
+            if (lucro_sensor <= 0){
+
+                mensagem = `<h1> SEM A MOUM SOYA: </h1>
+
+                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
+                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+                Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+
+                <hr>
+                <h1> COM A MOUM SOYA: </h1>
+
+                Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+                Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+                Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+                Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+                Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+                LUCRO: ${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya.  <br>
+
+                <hr>
+
+                <button onclick="NovaOperacao()">Refazer Operação</button>
+                `   
+
+            }
+        }
+        div_mensagem.innerHTML = mensagem;
+
+        //colocar algo pra validar o valor do lucro maior que o custo!
+        // if (lucro_sensor <= custo_final){
+
+        
+
+        //     mensagem = `<h1> SEM A MOUM SOYA: </h1>
+        
+        //     Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
+        //     Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
+        //     Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
+        //     Gasto Total: R$ <a style="color: red;">${custo}</a>.<br>
+        //     Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
+        //     Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
+            
+        //     <hr>
+        //     <h1> COM A MOUM SOYA: </h1>
+
+        //     Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
+        //     Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
+        //     Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
+        //     Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
+        //     Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
+        //     LUCRO: R$ ${lucro_sensor}. <br>
+
+        //     <hr>
+
+        //     <button onclick="NovaOperacao()">Refazer Operação</button>
+        // `     
+
+        
+
+
+
+        }    
+
+    function NovaOperacao(){
+
+        mensagem = `
+    
+        <h1><b id="txt_simulador">Simulador Financeiro</b></h1>
+        <h4>Hectares: <input type="number" id="txt_hectare"></h4>                  
+        <h4>Custo por hectare: R$<input type="number" id="txt_custo"></h4>
+        <h4>Faturamento mensal: R$<input type="number" id="txt_faturamento"></h4>
+        <h4>Custo com fungicidas por mês: R$<input type="number" id="txt_fungicida"></h4>
+        <h4> Sigla do Estado <u>(ex: SP/RJ)</u>:<input type="text" id="txt_estado"></h4>
+        <h4>Volume da chuva <u>(pouca, moderada, muita)</u>: <input type="text" id="txt_chuva"></h4>                                              
+        <h4>A produção já foi contaminada <u>(sim/não)</u>:<input type="text" id="txt_historico"></h4>
+                            
+
+                            
+        <h4>Temperatura do ambiente <u>(muito frio, frio, moderado, quente, muito quente)</u>:<input type="text" id="txt_temperatura"></h4>
+        <h4>Sacas coletadas por hectare: <input type="number" id="txt_sacas"></h4>
+                            
+
+        <button onclick="Calcular()" id="btn_calcular">Calcular</button>
+
+        `;
+
+        div_mensagem.innerHTML = mensagem
+
+
+    }
+
+
+
+</script>

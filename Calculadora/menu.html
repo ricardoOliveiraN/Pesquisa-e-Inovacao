@@ -706,7 +706,7 @@
                         <button onclick="Calcular()" id="btn_calcular">Calcular</button>
                     </div>
 
-                    <div class="div_resultado1">
+                    <div id="div_resultado1teste" class="div_resultado1">
                         <p id="lbl_resultado_risco"></p>
                         <p id="lbl_alerta"></p>
                         <p id="lbl_resultado_probabilidade"></p>
@@ -961,6 +961,15 @@ function Calcular(){
         alert(`Insira um valor do faturamento válido!`)
 
     } else if (risco == 13) {
+
+        div_resultado1teste.innerHTML = `
+            <div class="div_resultado1">
+                        <p id="lbl_resultado_risco">${risco_texto}</p>
+                        <p id="lbl_alerta"></p>
+                        <p id="lbl_resultado_probabilidade"></p>
+                        <p id="lbl_alerta2"></p>
+                    </div>`
+
         risco_texto = 'Muito alto'
         lbl_resultado_risco.innerHTML = (`Risco: ${risco_texto}`)
         lbl_alerta.innerHTML = (`<img src="alerta.png" alt="" id="img_alerta">`)
@@ -1206,5 +1215,6 @@ function Calcular(){
         lbl_resultado_ganhos_produtividade.innerHTML = (`${ganhos_produtividade} Sacas<img src="mais.png" alt="" id="img_mais"><img src="ponto.png" alt="" id="img_ponto">`)
         lbl_lucro.innerHTML = (`LUCRO: R$${lucro_sensor.toFixed(2)}`)
     }
+    
     }
 </script>
