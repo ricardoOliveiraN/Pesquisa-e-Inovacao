@@ -265,31 +265,40 @@
                 <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
                 <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
                 <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
-                <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
+                <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br><br>
                 <hr>
-             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
-        
-            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">95%</b></a> 
+                <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
             
-            <hr>
-            <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">80%</b></a>.<br>
-            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br>
-            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957">${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto com Fungicida: R$  <b style="color:#7ed957">${gastos_fungicida} (- 20%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957">${custo_final} (- ${cuto_final_porcentagem.toFixed(2).toFixed(2)}%)</b></a>. <br>
-            <a style="font-size: 20px;">LUCRO: R$  <b style="color:#7ed957">${lucro_sensor}</b></a>. <br>
+               
+                <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br><br>
+                
+                <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br><br>
 
-            <hr>
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">95%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br><br> 
 
-            <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
-        `
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br><br>
+
+                
+                <hr>
+                <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
+                <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">80%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">15%</b></a>.<br><br>
+
+                <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+                <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+                <a style="font-size: 20px;"> Somando R$ <b style="color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+                <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+                <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${cuto_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+
+                <a style="font-size: 20px;"> Ao pegar o novo faturamento (R$ <b style="color: yellow">${novo_faturamento}</b>) e subtrair do custo total (R$ <b style="color: yellow">${custo_final}</b>), após a implementação dos sensores, o LUCRO FINAL será de R$ <b style="color:#7ed957">${lucro_sensor}</b>.
+
+                <hr>
+
+                <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
+            `
         
             if (lucro_sensor <= 0){
 
@@ -305,13 +314,15 @@
                 <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
                 <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+                <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+                <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
 
-                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">95%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
 
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
@@ -349,13 +360,16 @@
             <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
              <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
-        
-            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+            
+               
+            <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+            <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
+           
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
@@ -386,14 +400,16 @@
                 <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
                 <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
-                <h1<h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
-      
-                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+                <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+                <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+                <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
 
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
@@ -429,14 +445,16 @@
             <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
             <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
-        
-            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+            <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+            <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+            <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
@@ -468,13 +486,15 @@
                 <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
                 <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+                <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+                <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
 
-                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
 
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
@@ -510,14 +530,16 @@
             <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
             <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
-        
-            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+            <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+            <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+            <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
@@ -549,13 +571,15 @@
                 <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
                 <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+                <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+                <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
 
-                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
 
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
@@ -591,14 +615,16 @@
             <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
             <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
-        
-            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+            <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+            <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+            <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
@@ -630,14 +656,15 @@
                 <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
                 <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+                <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+                <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
 
-                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
 
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
                 
@@ -672,14 +699,16 @@
             <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
             <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
-        
-            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+            <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+            <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+            <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
@@ -711,13 +740,15 @@
                 <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
                 <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+                <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+                <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
 
-                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
 
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
@@ -753,15 +784,17 @@
             <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
             <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
-        
-            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+            <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
             
+               
+            <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+            <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
+
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
             
@@ -792,14 +825,15 @@
                 <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
                 <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+                <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+                <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
 
-                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
 
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
                 
@@ -834,14 +868,16 @@
             <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
             <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
-        
-            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+            <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+            <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+            <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
+
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
@@ -874,14 +910,15 @@
                 <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
                 <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
+            
+               
+                <a style= "font-size: 20px;">Levando-se em consideração a quantidade de <b style="color: yellow">${hectare}</b> hectares e a quantidade de <b style="color: yellow">${saca}</b> sacas por hectare. A Quantidade Total é de <b style="color:red">${SacaHectarInicio}</b> sacas</a>. <br>
+                
+                <a style= "font-size: 20px;"> Com base no valor de R$ <b style="color: yellow">${custo}</b>, referente ao custo inicial, vezes a quantidade de <b style="color: yellow">${hectare}</b> hectares. O Gasto Total por Hectare é igual a R$ <b style="color:red">${custo_inicial}</b></a>.<br>
 
-                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
-                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
-                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
-                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
-                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
 
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
                 
@@ -908,22 +945,19 @@
 
         mensagem = `
     
-        <h1><b id="txt_simulador">Simulador Financeiro</b></h1>
-        <h4>Hectares: <input type="number" id="txt_hectare"></h4>                  
-        <h4>Custo por hectare: R$<input type="number" id="txt_custo"></h4>
-        <h4>Faturamento mensal: R$<input type="number" id="txt_faturamento"></h4>
-        <h4>Custo com fungicidas por mês: R$<input type="number" id="txt_fungicida"></h4>
-        <h4> Sigla do Estado <u>(ex: SP/RJ)</u>:<input type="text" id="txt_estado"></h4>
-        <h4>Volume da chuva <u>(pouca, moderada, muita)</u>: <input type="text" id="txt_chuva"></h4>                                              
-        <h4>A produção já foi contaminada <u>(sim/não)</u>:<input type="text" id="txt_historico"></h4>
-                            
+        <h1><b style="color: #7ed957; font-size: 50px;" id="txt_simulador">Simulador Financeiro</b></h1>
+        <h4 style="font-size: 30px;">Hectares: <input type="number" id="txt_hectare"></h4>                  
+        <h4 style="font-size: 30px;">Custo por hectare: R$<input type="number" id="txt_custo"></h4>
+        <h4 style="font-size: 30px;">Faturamento mensal: R$<input type="number" id="txt_faturamento"></h4>
+        <h4 style="font-size: 30px;">Custo com fungicidas por mês: R$<input type="number" id="txt_fungicida"></h4>
+        <h4 style="font-size: 30px;"> Sigla do Estado <u>(ex: SP/RJ)</u>:<input type="text" id="txt_estado"></h4>
+        <h4 style="font-size: 30px;">Volume da chuva <u>(pouca, moderada, muita)</u>: <input type="text" id="txt_chuva"></h4>                                              
+        <h4 style="font-size: 30px;">A produção já foi contaminada <u>(sim/não)</u>:<input type="text" id="txt_historico"></h4>
+        <h4 style="font-size: 30px;">Temperatura do ambiente <u>(muito frio, frio, moderado, quente, muito quente)</u>:<input type="text" id="txt_temperatura"></h4>
+        <h4 style="font-size: 30px;">Sacas coletadas por hectare: <input type="number" id="txt_sacas"></h4>
+                        
 
-                            
-        <h4>Temperatura do ambiente <u>(muito frio, frio, moderado, quente, muito quente)</u>:<input type="text" id="txt_temperatura"></h4>
-        <h4>Sacas coletadas por hectare: <input type="number" id="txt_sacas"></h4>
-                            
-
-        <button onclick="Calcular()" id="btn_calcular">Calcular</button>
+        <button onclick="Calcular()" id="btn_calcular" style="background-color: #7ed957; width:300px; height:50px;">Calcular</button> 
 
         `;
 
