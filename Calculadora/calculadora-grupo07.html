@@ -3,23 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simulador Financeiro</title>
 
 </head>
 
 <body>
    
-    <!-- <div id="div_mensagem" style="background-color: #100d28; opacity: 0.9; color: white;"></div>  -->
      <div id="div_mensagem" style="
         background-size: cover;
         color: white;
-
-     background-image: url(imagens/NOVO.png);"></div>
-
-     <!-- criar texto para resposta mais completa deixando o cálculo exposto para ser aproveitado; 
-      subir logo;
-      deixar o título verde (palheta de cores usada no logo);
-      resultado mais visível (negrito e cor palheta); -->
+        background-image: url(imagens/NOVO.png);">
+    </div>
    
 
 </body>
@@ -28,22 +22,19 @@
 
     mensagem = `
     
-    <h1><b style="color: #7ed957;" id="txt_simulador">Simulador Financeiro</b></h1>
-    <h4>Hectares: <input type="number" id="txt_hectare"></h4>                  
-    <h4>Custo por hectare: R$<input type="number" id="txt_custo"></h4>
-    <h4>Faturamento mensal: R$<input type="number" id="txt_faturamento"></h4>
-    <h4>Custo com fungicidas por mês: R$<input type="number" id="txt_fungicida"></h4>
-    <h4> Sigla do Estado <u>(ex: SP/RJ)</u>:<input type="text" id="txt_estado"></h4>
-    <h4>Volume da chuva <u>(pouca, moderada, muita)</u>: <input type="text" id="txt_chuva"></h4>                                              
-    <h4>A produção já foi contaminada <u>(sim/não)</u>:<input type="text" id="txt_historico"></h4>
+    <h1><b style="color: #7ed957; font-size: 50px;" id="txt_simulador">Simulador Financeiro</b></h1>
+    <h4 style="font-size: 30px;">Hectares: <input type="number" id="txt_hectare"></h4>                  
+    <h4 style="font-size: 30px;">Custo por hectare: R$<input type="number" id="txt_custo"></h4>
+    <h4 style="font-size: 30px;">Faturamento mensal: R$<input type="number" id="txt_faturamento"></h4>
+    <h4 style="font-size: 30px;">Custo com fungicidas por mês: R$<input type="number" id="txt_fungicida"></h4>
+    <h4 style="font-size: 30px;"> Sigla do Estado <u>(ex: SP/RJ)</u>:<input type="text" id="txt_estado"></h4>
+    <h4 style="font-size: 30px;">Volume da chuva <u>(pouca, moderada, muita)</u>: <input type="text" id="txt_chuva"></h4>                                              
+    <h4 style="font-size: 30px;">A produção já foi contaminada <u>(sim/não)</u>:<input type="text" id="txt_historico"></h4>
+    <h4 style="font-size: 30px;">Temperatura do ambiente <u>(muito frio, frio, moderado, quente, muito quente)</u>:<input type="text" id="txt_temperatura"></h4>
+    <h4 style="font-size: 30px;">Sacas coletadas por hectare: <input type="number" id="txt_sacas"></h4>
                         
 
-                        
-    <h4>Temperatura do ambiente <u>(muito frio, frio, moderado, quente, muito quente)</u>:<input type="text" id="txt_temperatura"></h4>
-    <h4>Sacas coletadas por hectare: <input type="number" id="txt_sacas"></h4>
-                        
-
-    <button onclick="Calcular()" id="btn_calcular">Calcular</button> 
+    <button onclick="Calcular()" id="btn_calcular" style="background-color: #7ed957; width:300px; height:50px;">Calcular</button> 
 
     `;
 
@@ -265,77 +256,77 @@
             probabilidade = (risco / 13) * 100
             risco_texto = 'Muito alto'
             nova_probabilidade = probabilidade - 15
-            mensagem = `<h1> Dados Inseridos </h1>
-            Quantidade de Hectares: ${hectare}.<br>
-            Sacas Coletadas por Hectare: ${saca}.<br>
-            Custo por Hectare: R$ ${custo}. <br>
-            Faturamento Mensal: R$ ${faturamento}.<br>
-            Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-            Estado: ${estado}.<br>
-            Volume de Chuva: ${chuva}.<br>
-            Temperatura do Ambiente: ${temperatura}.<br>
-            Histórico: ${historico}.<br>
-            <hr>
-             <h1> SEM A MOUM SOYA: </h1>
+                mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+                <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+                <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+                <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+                <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+                <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+                <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+                <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+                <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
+                <hr>
+             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
         
-            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">95%</a> 
+            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">95%</b></a> 
             
             <hr>
-            <h1> COM A MOUM SOYA: </h1>
-            Nova probabilidade: <a style="color: green;">80%</a>.<br>
-            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-            Ganhos com a nova Produtividade: R$ <a style="color: green;">${ganhos_faturamento}</a>. <br>
-            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}</a>. <br>
+            <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
+            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">80%</b></a>.<br>
+            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br>
+            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957">${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto com Fungicida: R$  <b style="color:#7ed957">${gastos_fungicida} (- 20%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957">${custo_final} (- ${cuto_final_porcentagem.toFixed(2).toFixed(2)}%)</b></a>. <br>
+            <a style="font-size: 20px;">LUCRO: R$  <b style="color:#7ed957">${lucro_sensor}</b></a>. <br>
 
             <hr>
 
-            <button onclick="NovaOperacao()">Refazer Operação</button>
+            <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
         `
         
             if (lucro_sensor <= 0){
 
-                mensagem = `<h1> Dados Inseridos </h1>
-                Quantidade de Hectares: ${hectare}.<br>
-                Sacas Coletadas por Hectare: ${saca}.<br>
-                Custo por Hectare: R$ ${custo}. <br>
-                Faturamento Mensal: R$ ${faturamento}.<br>
-                Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-                Estado: ${estado}.<br>
-                Volume de Chuva: ${chuva}.<br>
-                Temperatura do Ambiente: ${temperatura}.<br>
-                Histórico: ${historico}.<br>
+                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+                <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+                <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+                <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+                <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+                <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+                <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+                <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+                <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
-                 <h1> SEM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
 
-                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
 
                 <hr>
-                <h1> COM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
                 
-                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
+                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+                <a style="font-size: 20px;">Faturamento Total: R$ <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto Total: R$ <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+                <a style="font-size: 20px;">LUCRO: <b style="color:#7ed957">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</b></a>.  <br>
 
                 <hr>
 
-                <button onclick="NovaOperacao()">Refazer Operação</button>
+                <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
                 `   
 
             }
@@ -346,78 +337,78 @@
             risco_texto = 'Muito alto'
             nova_probabilidade = probabilidade - 15
 
-            mensagem = `<h1> Dados Inseridos </h1>
-            Quantidade de Hectares: ${hectare}.<br>
-            Sacas Coletadas por Hectare: ${saca}.<br>
-            Custo por Hectare: R$ ${custo}. <br>
-            Faturamento Mensal: R$ ${faturamento}.<br>
-            Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-            Estado: ${estado}.<br>
-            Volume de Chuva: ${chuva}.<br>
-            Temperatura do Ambiente: ${temperatura}.<br>
-            Histórico: ${historico}.<br>
+            mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+            <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+            <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+            <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+            <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+            <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+            <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+            <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+            <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+            <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1> SEM A MOUM SOYA: </h1>
+             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
         
-            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
             
             <hr>
-            <h1> COM A MOUM SOYA: </h1>
+            <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
             
-            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-            Faturamento Total: R$  <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-            Gasto Total: R$  <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}</a>. <br>
+            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
             <hr>
 
-            <button onclick="NovaOperacao()">Refazer Operação</button>
+            <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
         `
         
             if (lucro_sensor <= 0){
 
-                mensagem = `<h1> Dados Inseridos </h1>
-                Quantidade de Hectares: ${hectare}.<br>
-                Sacas Coletadas por Hectare: ${saca}.<br>
-                Custo por Hectare: R$ ${custo}. <br>
-                Faturamento Mensal: R$ ${faturamento}.<br>
-                Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-                Estado: ${estado}.<br>
-                Volume de Chuva: ${chuva}.<br>
-                Temperatura do Ambiente: ${temperatura}.<br>
-                Histórico: ${historico}.<br>
+                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+                <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+                <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+                <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+                <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+                <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+                <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+                <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+                <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
-                 <h1> SEM A MOUM SOYA: </h1>
+                <h1<h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
       
-                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
 
                 <hr>
-                <h1> COM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
                 
-                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-                Ganhos com a nova Produtividade: R$  <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
+                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
                 <hr>
 
-                <button onclick="NovaOperacao()">Refazer Operação</button>
+                <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
                 `   
 
             }
@@ -427,78 +418,78 @@
             probabilidade = (risco / 13) * 100
             risco_texto = 'Muito alto'
             nova_probabilidade = probabilidade - 15
-            mensagem = `<h1> Dados Inseridos </h1>
-            Quantidade de Hectares: ${hectare}.<br>
-            Sacas Coletadas por Hectare: ${saca}.<br>
-            Custo por Hectare: R$ ${custo}. <br>
-            Faturamento Mensal: R$ ${faturamento}.<br>
-            Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-            Estado: ${estado}.<br>
-            Volume de Chuva: ${chuva}.<br>
-            Temperatura do Ambiente: ${temperatura}.<br>
-            Histórico: ${historico}.<br>
+            mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+            <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+            <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+            <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+            <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+            <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+            <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+            <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+            <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+            <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1> SEM A MOUM SOYA: </h1>
+             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
         
-            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
             
             <hr>
-            <h1> COM A MOUM SOYA: </h1>
+            <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
             
-            Nova probabilidade: <a style="color: red;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-            Produtividade: <a style="color: red;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-            Ganhos com a nova Produtividade: R$ <a style="color: red;">  ${ganhos_faturamento}</a>. <br>
-            Faturamento Total: R$ <a style="color: red;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-            Gasto com Fungicida: R$ <a style="color: red;"> ${gastos_fungicida} (- 20%)</a>. <br>
-            Gasto Total: R$ <a style="color: red;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-            LUCRO: R$ <a style="color: red;">${lucro_sensor}</a>. <br>
+            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
             <hr>
 
-            <button onclick="NovaOperacao()">Refazer Operação</button>
+            <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
         `
         
             if (lucro_sensor <= 0){
 
-                mensagem = `<h1> Dados Inseridos </h1>
-                Quantidade de Hectares: ${hectare}.<br>
-                Sacas Coletadas por Hectare: ${saca}.<br>
-                Custo por Hectare: R$ ${custo}. <br>
-                Faturamento Mensal: R$ ${faturamento}.<br>
-                Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-                Estado: ${estado}.<br>
-                Volume de Chuva: ${chuva}.<br>
-                Temperatura do Ambiente: ${temperatura}.<br>
-                Histórico: ${historico}.<br>
+                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+                <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+                <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+                <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+                <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+                <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+                <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+                <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+                <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
-                 <h1> SEM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
 
-                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
 
                 <hr>
-                <h1> COM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
                 
-                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
+                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
                 <hr>
 
-                <button onclick="NovaOperacao()">Refazer Operação</button>
+                <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
                 `   
 
             }
@@ -508,78 +499,78 @@
             probabilidade = (risco / 13) * 100
             risco_texto = 'Alto'
             nova_probabilidade = probabilidade - 15
-            mensagem = `<h1> Dados Inseridos </h1>
-            Quantidade de Hectares: ${hectare}.<br>
-            Sacas Coletadas por Hectare: ${saca}.<br>
-            Custo por Hectare: R$ ${custo}. <br>
-            Faturamento Mensal: R$ ${faturamento}.<br>
-            Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-            Estado: ${estado}.<br>
-            Volume de Chuva: ${chuva}.<br>
-            Temperatura do Ambiente: ${temperatura}.<br>
-            Histórico: ${historico}.<br>
+            mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+            <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+            <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+            <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+            <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+            <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+            <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+            <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+            <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+            <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1> SEM A MOUM SOYA: </h1>
+             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
         
-            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
             
             <hr>
-            <h1> COM A MOUM SOYA: </h1>
+            <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
             
-            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}</a>. <br>
+            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
             <hr>
 
-            <button onclick="NovaOperacao()">Refazer Operação</button>
+            <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
         `   
        
              if (lucro_sensor <= 0){
 
-                mensagem = `<h1> Dados Inseridos </h1>
-                Quantidade de Hectares: ${hectare}.<br>
-                Sacas Coletadas por Hectare: ${saca}.<br>
-                Custo por Hectare: R$ ${custo}. <br>
-                Faturamento Mensal: R$ ${faturamento}.<br>
-                Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-                Estado: ${estado}.<br>
-                Volume de Chuva: ${chuva}.<br>
-                Temperatura do Ambiente: ${temperatura}.<br>
-                Histórico: ${historico}.<br>
+                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+                <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+                <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+                <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+                <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+                <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+                <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+                <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+                <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
-                 <h1> SEM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
 
-                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
 
                 <hr>
-                <h1> COM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
                 
-                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
+                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
                 <hr>
 
-                <button onclick="NovaOperacao()">Refazer Operação</button>
+                <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
                 `   
 
             }  
@@ -589,78 +580,78 @@
             probabilidade = (risco / 13) * 100
             risco_texto = 'Alto'
             nova_probabilidade = probabilidade - 15
-            mensagem = `<h1> Dados Inseridos </h1>
-            Quantidade de Hectares: ${hectare}.<br>
-            Sacas Coletadas por Hectare: ${saca}.<br>
-            Custo por Hectare: R$ ${custo}. <br>
-            Faturamento Mensal: R$ ${faturamento}.<br>
-            Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-            Estado: ${estado}.<br>
-            Volume de Chuva: ${chuva}.<br>
-            Temperatura do Ambiente: ${temperatura}.<br>
-            Histórico: ${historico}.<br>
+            mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+            <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+            <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+            <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+            <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+            <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+            <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+            <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+            <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+            <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1> SEM A MOUM SOYA: </h1>
+             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
         
-            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
             
             <hr>
-            <h1> COM A MOUM SOYA: </h1>
+            <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
             
-            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%. <br>
-            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}. <br>
-            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%). <br>
-            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}. <br>
+            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
             <hr>
 
-            <button onclick="NovaOperacao()">Refazer Operação</button>
+            <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
         `   
 
             if (lucro_sensor <= 0){
 
-                mensagem = `<h1> Dados Inseridos </h1>
-                Quantidade de Hectares: ${hectare}.<br>
-                Sacas Coletadas por Hectare: ${saca}.<br>
-                Custo por Hectare: R$ ${custo}. <br>
-                Faturamento Mensal: R$ ${faturamento}.<br>
-                Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-                Estado: ${estado}.<br>
-                Volume de Chuva: ${chuva}.<br>
-                Temperatura do Ambiente: ${temperatura}.<br>
-                Histórico: ${historico}.<br>
+                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+                <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+                <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+                <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+                <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+                <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+                <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+                <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+                <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
-                 <h1> SEM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
 
-                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
 
                 <hr>
-                <h1> COM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
                 
-                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-                LUCRO: R<a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
+                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
                 <hr>
 
-                <button onclick="NovaOperacao()">Refazer Operação</button>
+                <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
                 `   
 
             }
@@ -670,78 +661,78 @@
             probabilidade = (risco / 13) * 100
             risco_texto = 'Alto'
             nova_probabilidade = probabilidade - 15
-            mensagem = `<h1> Dados Inseridos </h1>
-            Quantidade de Hectares: ${hectare}.<br>
-            Sacas Coletadas por Hectare: ${saca}.<br>
-            Custo por Hectare: R$ ${custo}. <br>
-            Faturamento Mensal: R$ ${faturamento}.<br>
-            Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-            Estado: ${estado}.<br>
-            Volume de Chuva: ${chuva}.<br>
-            Temperatura do Ambiente: ${temperatura}.<br>
-            Histórico: ${historico}.<br>
+            mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+            <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+            <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+            <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+            <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+            <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+            <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+            <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+            <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+            <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1> SEM A MOUM SOYA: </h1>
+             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
         
-            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
             
             <hr>
-            <h1> COM A MOUM SOYA: </h1>
+            <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
             
-            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}</a>. <br>
+            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
             <hr>
 
-            <button onclick="NovaOperacao()">Refazer Operação</button>
+            <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
         `   
 
             if (lucro_sensor <= 0){
 
-                mensagem = `<h1> Dados Inseridos </h1>
-                Quantidade de Hectares: ${hectare}.<br>
-                Sacas Coletadas por Hectare: ${saca}.<br>
-                Custo por Hectare: R$ ${custo}. <br>
-                Faturamento Mensal: R$ ${faturamento}.<br>
-                Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-                Estado: ${estado}.<br>
-                Volume de Chuva: ${chuva}.<br>
-                Temperatura do Ambiente: ${temperatura}.<br>
-                Histórico: ${historico}.<br>
+                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+                <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+                <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+                <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+                <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+                <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+                <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+                <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+                <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
-                 <h1> SEM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
 
-                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
 
                 <hr>
-                <h1> COM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
                 
-                Nova probabilidade: $<a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
+                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
                 <hr>
 
-                <button onclick="NovaOperacao()">Refazer Operação</button>
+                <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
                 `   
 
             }
@@ -751,78 +742,78 @@
             probabilidade = (risco / 13) * 100
             risco_texto = 'Médio'
             nova_probabilidade = probabilidade - 30
-            mensagem = `<h1> Dados Inseridos </h1>
-            Quantidade de Hectares: ${hectare}.<br>
-            Sacas Coletadas por Hectare: ${saca}.<br>
-            Custo por Hectare: R$ ${custo}. <br>
-            Faturamento Mensal: R$ ${faturamento}.<br>
-            Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-            Estado: ${estado}.<br>
-            Volume de Chuva: ${chuva}.<br>
-            Temperatura do Ambiente: ${temperatura}.<br>
-            Histórico: ${historico}.<br>
+            mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+            <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+            <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+            <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+            <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+            <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+            <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+            <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+            <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+            <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1> SEM A MOUM SOYA: </h1>
+             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
         
-            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
             
             <hr>
-            <h1> COM A MOUM SOYA: </h1>
+            <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
             
-            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-            LUCRO: R$ <a style="color: green;"><a style="color: green;"> ${lucro_sensor}</a>. <br>
+            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
             <hr>
 
-            <button onclick="NovaOperacao()">Refazer Operação</button>
+            <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
         `   
             
             if (lucro_sensor <= 0){
 
-                mensagem = `<h1> Dados Inseridos </h1>
-                Quantidade de Hectares: ${hectare}.<br>
-                Sacas Coletadas por Hectare: ${saca}.<br>
-                Custo por Hectare: R$ ${custo}. <br>
-                Faturamento Mensal: R$ ${faturamento}.<br>
-                Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-                Estado: ${estado}.<br>
-                Volume de Chuva: ${chuva}.<br>
-                Temperatura do Ambiente: ${temperatura}.<br>
-                Histórico: ${historico}.<br>
+                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+                <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+                <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+                <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+                <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+                <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+                <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+                <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+                <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
-                 <h1> SEM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
 
-                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
 
                 <hr>
-                <h1> COM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
                 
-                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
+                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
                 <hr>
 
-                <button onclick="NovaOperacao()">Refazer Operação</button>
+                <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
                 `   
 
             }    
@@ -832,117 +823,84 @@
             probabilidade = (risco / 13) * 100
             risco_texto = 'Médio'
             nova_probabilidade = probabilidade - 30
-            mensagem = `<h1> Dados Inseridos </h1>
-            Quantidade de Hectares: ${hectare}.<br>
-            Sacas Coletadas por Hectare: ${saca}.<br>
-            Custo por Hectare: R$ ${custo}. <br>
-            Faturamento Mensal: R$ ${faturamento}.<br>
-            Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-            Estado: ${estado}.<br>
-            Volume de Chuva: ${chuva}.<br>
-            Temperatura do Ambiente: ${temperatura}.<br>
-            Histórico: ${historico}.<br>
+            mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+            <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+            <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+            <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+            <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+            <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+            <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+            <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+            <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+            <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
             <hr>
-             <h1> SEM A MOUM SOYA: </h1>
+             <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
         
-            Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-            Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-            Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-            Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-            Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-            Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+            <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+            <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+            <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+            <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
             
             <hr>
-            <h1> COM A MOUM SOYA: </h1>
+            <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
             
-            Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-            Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-            Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-            Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-            Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-            Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-            LUCRO: R$ <a style="color: green;"> ${lucro_sensor}</a>. <br>
+            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
             <hr>
 
-            <button onclick="NovaOperacao()">Refazer Operação</button>`
+            <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>`
     
 
           
             if (lucro_sensor <= 0){
 
-                mensagem = `<h1> Dados Inseridos </h1>
-                Quantidade de Hectares: ${hectare}.<br>
-                Sacas Coletadas por Hectare: ${saca}.<br>
-                Custo por Hectare: R$ ${custo}. <br>
-                Faturamento Mensal: R$ ${faturamento}.<br>
-                Custo Mensal com Fungicida: R$ ${fungicida}. <br>
-                Estado: ${estado}.<br>
-                Volume de Chuva: ${chuva}.<br>
-                Temperatura do Ambiente: ${temperatura}.<br>
-                Histórico: ${historico}.<br>
+                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
+                <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
+                <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
+                <a style= "font-size: 20px;">Faturamento Mensal: R$ <b style="color: yellow">${faturamento}.</b></a><br>
+                <a style= "font-size: 20px;">Custo Mensal com Fungicida: R$ <b style="color: yellow">${fungicida}.</b> </a><br>
+                <a style= "font-size: 20px;">Estado: <b style="color: yellow">${estado}.</b></a><br>
+                <a style= "font-size: 20px;">Volume de Chuva: <b style="color: yellow">${chuva}.</b></a><br>
+                <a style= "font-size: 20px;">Temperatura do Ambiente: <b style="color: yellow">${temperatura}.</b></a><br>
+                <a style= "font-size: 20px;">Histórico: <b style="color: yellow">${historico}.</b></a><br>
                 <hr>
-                 <h1> SEM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> SEM A MOUM SOYA: </h1>
 
-                Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-                Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-                Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-                Gasto Total: R$ <a style="color: red;">${custo_inicial}</a>.<br>
-                Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-                Probabilidade de Contaminação: <a style="color: red;">${probabilidade.toFixed(2)}%</a> 
+                <a style= "font-size: 20px;">Faturamento: R$ <b style="color:red">${faturamento}</b></a>.<br>
+                <a style= "font-size: 20px;">Sacas Totais: <b style="color:red">${SacaHectarInicio}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Fungicida: R$ <b style="color:red">${fungicida}</b></a>. <br>
+                <a style= "font-size: 20px;">Gasto Total: R$ <b style="color:red">${custo_inicial}</b></a>.<br>
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b></a>.<br>
+                <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b></a> 
 
                 <hr>
-                <h1> COM A MOUM SOYA: </h1>
+                <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
                 
-                Nova probabilidade: <a style="color: green;">${nova_probabilidade.toFixed(2)}%</a>. <br>
-                Produtividade: <a style="color: green;">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</a>. <br> 
-                Ganhos com a nova Produtividade: R$ <a style="color: green;"> ${ganhos_faturamento}</a>. <br>
-                Faturamento Total: R$ <a style="color: green;"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</a>. <br>
-                Gasto com Fungicida: R$ <a style="color: green;"> ${gastos_fungicida} (- 20%)</a>. <br>
-                Gasto Total: R$ <a style="color: green;"> ${custo_final} (- ${cuto_final_porcentagem}%)</a>. <br>
-                LUCRO: <a style="color: green;">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</a>.  <br>
+                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
+                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
+                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
+                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
                 <hr>
 
-                <button onclick="NovaOperacao()">Refazer Operação</button>
+                <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
                 `   
 
             }
         }
         div_mensagem.innerHTML = mensagem;
-
-        //colocar algo pra validar o valor do lucro maior que o custo!
-        // if (lucro_sensor <= custo_final){
-
-        
-
-        //     mensagem = `<h1> SEM A MOUM SOYA: </h1>
-        
-        //     Faturamento: R$ <a style="color: red;">${faturamento}</a>.<br>
-        //     Sacas Totais: <a style="color: red;">${SacaHectarInicio}</a>. <br>
-        //     Gasto Fungicida: R$ <a style="color: red;">${fungicida}</a>. <br>
-        //     Gasto Total: R$ <a style="color: red;">${custo}</a>.<br>
-        //     Risco de Contaminção: <a style="color: red;">${risco_texto}</a>.<br>
-        //     Probabilidade de Contaminação: <a style="color: red;">${probabilidade}%</a> 
-            
-        //     <hr>
-        //     <h1> COM A MOUM SOYA: </h1>
-
-        //     Produtividade: ${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas). <br> 
-        //     Ganhos com a nova Produtividade: R$ ${ganhos_faturamento}. <br>
-        //     Faturamento Total: R$ ${novo_faturamento} (${ganhos_porcentagem_faturamento}%). <br>
-        //     Gasto com Fungicida: R$ ${gastos_fungicida} (- 20%). <br>
-        //     Gasto Total: R$ ${custo_final} (- ${cuto_final_porcentagem}%). <br>
-        //     LUCRO: R$ ${lucro_sensor}. <br>
-
-        //     <hr>
-
-        //     <button onclick="NovaOperacao()">Refazer Operação</button>
-        // `     
-
-        
-
-
 
         }    
 
