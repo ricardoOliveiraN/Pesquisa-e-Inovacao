@@ -61,7 +61,7 @@
         var custo_inicial = custo * hectare // custo total da produção sem sensor
         var gastos_fungicida = fungicida * 0.8 // custo novo de fungicidas com sensor
         var custo_final = custo_inicial - (fungicida * 0.2) // custo final da produção menos o desconto com sensor
-        var cuto_final_porcentagem = ((custo_inicial - custo_final) / custo_inicial) * 100;
+        var custo_final_porcentagem = ((custo_inicial - custo_final) / custo_inicial) * 100;
         var ganhos_saca = saca * 0.1
         var ganhos_produtividade = hectare * ganhos_saca // novos ganhos em sacas da produtivade(colheita) com sensor
         var ganhos_faturamento = ganhos_produtividade * 150 // novos ganhos da produtivade(colheita) em reais com sensor
@@ -287,11 +287,11 @@
 
                 <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
 
-                <a style="font-size: 20px;"> Somando R$ <b style="color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+                <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
 
                 <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
                     
-                <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${cuto_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+                <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
 
                 <a style="font-size: 20px;"> Ao pegar o novo faturamento (R$ <b style="color: yellow">${novo_faturamento}</b>) e subtrair do custo total (R$ <b style="color: yellow">${custo_final}</b>), após a implementação dos sensores, o LUCRO FINAL será de R$ <b style="color:#7ed957">${lucro_sensor}</b>.
 
@@ -302,7 +302,7 @@
         
             if (lucro_sensor <= 0){
 
-                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
                 <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
                 <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
                 <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
@@ -325,14 +325,19 @@
                 <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
 
                 <hr>
+                               
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-                
-                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-                <a style="font-size: 20px;">Faturamento Total: R$ <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto Total: R$ <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+                <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 15}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">15%</b></a>.<br><br>
+
+                <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+                <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+                <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+                <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+                <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
                 <a style="font-size: 20px;">LUCRO: <b style="color:#7ed957">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</b></a>.  <br>
 
                 <hr>
@@ -373,23 +378,28 @@
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-            
-            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+            <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 15}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">15%</b></a>.<br><br>
+
+            <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+            <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+            <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+            <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao pegar o novo faturamento (R$ <b style="color: yellow">${novo_faturamento}</b>) e subtrair do custo total (R$ <b style="color: yellow">${custo_final}</b>), após a implementação dos sensores, o LUCRO FINAL será de R$ <b style="color:#7ed957">${lucro_sensor}</b>.
 
             <hr>
 
             <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
-        `
+            `
         
             if (lucro_sensor <= 0){
 
-                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
                 <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
                 <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
                 <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
@@ -413,19 +423,23 @@
 
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-                
-                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+                <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 15}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">15%</b></a>.<br><br>
+
+                <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+                <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+                <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+                <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+                <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+                <a style="font-size: 20px;">LUCRO: <b style="color:#7ed957">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</b></a>.  <br>
 
                 <hr>
 
                 <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
-                `   
+                `      
 
             }
 
@@ -458,23 +472,30 @@
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-            
-            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+            <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 15}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">15%</b></a>.<br><br>
+
+            <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+            <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+            <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+            <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao pegar o novo faturamento (R$ <b style="color: yellow">${novo_faturamento}</b>) e subtrair do custo total (R$ <b style="color: yellow">${custo_final}</b>), após a implementação dos sensores, o LUCRO FINAL será de R$ <b style="color:#7ed957">${lucro_sensor}</b>.
 
             <hr>
 
             <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
+            
         `
         
             if (lucro_sensor <= 0){
 
-                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                
+                mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
                 <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
                 <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
                 <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
@@ -498,19 +519,23 @@
 
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-                
-                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+                <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 15}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">15%</b></a>.<br><br>
+
+                <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+                <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+                <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+                <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+                <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+                <a style="font-size: 20px;">LUCRO: <b style="color:#7ed957">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</b></a>.  <br>
 
                 <hr>
 
                 <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
-                `   
+                `     
 
             }
     
@@ -543,23 +568,30 @@
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-            
-            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+            <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 20}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">20%</b></a>.<br><br>
+
+            <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+            <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+            <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+            <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao pegar o novo faturamento (R$ <b style="color: yellow">${novo_faturamento}</b>) e subtrair do custo total (R$ <b style="color: yellow">${custo_final}</b>), após a implementação dos sensores, o LUCRO FINAL será de R$ <b style="color:#7ed957">${lucro_sensor}</b>.
 
             <hr>
 
             <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
-        `   
+            
+        `
        
              if (lucro_sensor <= 0){
 
-                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                
+                mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
                 <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
                 <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
                 <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
@@ -583,19 +615,23 @@
 
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-                
-                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+                <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 15}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">15%</b></a>.<br><br>
+
+                <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+                <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+                <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+                <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+                <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+                <a style="font-size: 20px;">LUCRO: <b style="color:#7ed957">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</b></a>.  <br>
 
                 <hr>
 
                 <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
-                `   
+                `      
 
             }  
 
@@ -628,23 +664,30 @@
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-            
-            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+            <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 20}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">20%</b></a>.<br><br>
+
+            <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+            <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+            <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+            <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao pegar o novo faturamento (R$ <b style="color: yellow">${novo_faturamento}</b>) e subtrair do custo total (R$ <b style="color: yellow">${custo_final}</b>), após a implementação dos sensores, o LUCRO FINAL será de R$ <b style="color:#7ed957">${lucro_sensor}</b>.
 
             <hr>
 
             <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
-        `   
+            
+        `
 
             if (lucro_sensor <= 0){
 
-                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                
+                mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
                 <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
                 <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
                 <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
@@ -664,22 +707,27 @@
 
                 <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
 
-                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
+
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-                
-                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+                <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 15}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">15%</b></a>.<br><br>
+
+                <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+                <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+                <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+                <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+                <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+                <a style="font-size: 20px;">LUCRO: <b style="color:#7ed957">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</b></a>.  <br>
 
                 <hr>
 
                 <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
-                `   
+                `      
 
             }
             
@@ -708,27 +756,34 @@
 
             <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
 
-            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-            
-            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+            <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 20}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">20%</b></a>.<br><br>
+
+            <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+            <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+            <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+            <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao pegar o novo faturamento (R$ <b style="color: yellow">${novo_faturamento}</b>) e subtrair do custo total (R$ <b style="color: yellow">${custo_final}</b>), após a implementação dos sensores, o LUCRO FINAL será de R$ <b style="color:#7ed957">${lucro_sensor}</b>.
 
             <hr>
 
             <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
-        `   
+            
+        `
 
             if (lucro_sensor <= 0){
 
-                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                
+                mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
                 <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
                 <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
                 <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
@@ -752,20 +807,23 @@
 
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-                
-                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+                <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 15}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">15%</b></a>.<br><br>
+
+                <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+                <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+                <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+                <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+                <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+                <a style="font-size: 20px;">LUCRO: <b style="color:#7ed957">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</b></a>.  <br>
 
                 <hr>
 
                 <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
                 `   
-
             }
 
         }
@@ -793,27 +851,33 @@
 
             <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
 
-            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
-
+            <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
+            
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-            
-            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+            <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 30}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">30%</b></a>.<br><br>
+
+            <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+            <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+            <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+            <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao pegar o novo faturamento (R$ <b style="color: yellow">${novo_faturamento}</b>) e subtrair do custo total (R$ <b style="color: yellow">${custo_final}</b>), após a implementação dos sensores, o LUCRO FINAL será de R$ <b style="color:#7ed957">${lucro_sensor}</b>.
 
             <hr>
 
             <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
-        `   
+            
+        `
             
             if (lucro_sensor <= 0){
 
-                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
                 <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
                 <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
                 <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
@@ -842,7 +906,7 @@
                 <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
                 <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
                 <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
+                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${custo_final_porcentagem.toFixed(2)}%)</b></a>. <br>
                 <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
 
                 <hr>
@@ -881,24 +945,32 @@
             
             <hr>
             <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-            
-            <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-            <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-            <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-            <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-            <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-            <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+            <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 30}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">30%</b></a>.<br><br>
+
+            <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+            <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+            <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+            <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+
+            <a style="font-size: 20px;"> Ao pegar o novo faturamento (R$ <b style="color: yellow">${novo_faturamento}</b>) e subtrair do custo total (R$ <b style="color: yellow">${custo_final}</b>), após a implementação dos sensores, o LUCRO FINAL será de R$ <b style="color:#7ed957">${lucro_sensor}</b>.
 
             <hr>
 
-            <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>`
+            <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
+            
+        `
     
 
           
             if (lucro_sensor <= 0){
 
-                        mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
+                
+                mensagem = `<h1 style= "font-size: 30px;"> DADOS INSERIDOS </h1>
                 <a style= "font-size: 20px;">Quantidade de Hectares: <b style="color: yellow">${hectare}.</b></a><br>
                 <a style= "font-size: 20px;">Sacas Coletadas por Hectare: <b style="color: yellow">${saca}.</b></a><br>
                 <a style= "font-size: 20px;">Custo por Hectare: R$ <b style="color: yellow">${custo}.</b> </a><br>
@@ -918,23 +990,27 @@
 
                 <a style= "font-size: 20px;">Probabilidade de Contaminação: <b style="color:red">${probabilidade.toFixed(2)}%</b> - calculada ao dividir a soma dos riscos (<b style="color: yellow">${risco}</b>) pelo risco máximo (<b style="color: yellow">13</b>).</a><br> 
 
-                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br>
+                <a style= "font-size: 20px;">Risco de Contaminção: <b style="color:red">${risco_texto}</b> - devido a probabilidade calculada.</a>.<br> 
+
                 <hr>
                 <h1 style= "font-size: 30px;"> COM A MOUM SOYA: </h1>
-                
-                <a style="font-size: 20px;">Nova probabilidade: <b style="color:#7ed957">${nova_probabilidade.toFixed(2)}%</b></a>. <br>
-                <a style="font-size: 20px;">Produtividade: <b style="color:#7ed957">${PorcentagemProdutividade}% (+${ganhos_produtividade} sacas)</b></a>. <br> 
-                <a style="font-size: 20px;">Ganhos com a nova Produtividade: R$ <b style="color:#7ed957"> ${ganhos_faturamento}</b></a>. <br>
-                <a style="font-size: 20px;">Faturamento Total: R$  <b style="color:#7ed957"> ${novo_faturamento} (${ganhos_porcentagem_faturamento}%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto com Fungicida: R$ <b style="color:#7ed957"> ${gastos_fungicida} (- 20%)</b></a>. <br>
-                <a style="font-size: 20px;">Gasto Total: R$  <b style="color:#7ed957"> ${custo_final} (- ${cuto_final_porcentagem.toFixed(2)}%)</b></a>. <br>
-                <a style="font-size: 20px;">LUCRO: R$ <b style="color:#7ed957"> ${lucro_sensor}</b></a>. <br>
+                <a style="font-size: 20px;">  A nova Probabilidade é de <b style="color:#7ed957">${probabilidade - 15}%</b>, uma vez que o risco, quando ele é ${risco_texto}, nós garantimos uma diminuição de pelo menos <b style="color:#7ed957">15%</b></a>.<br><br>
+
+                <a style="font-size: 20px;"> Nós garantimos, pelo menos, um aumento de <b style="color:#7ed957">10%</b> na sua Produtivida Final. O que representa um aumento de <b style="color:#7ed957">${ganhos_saca}</b> sacas - porcentagem calculada através da multiplicação de <b style="color: yellow">0.10</b> pelo valor de <b style="color: yellow">${saca}</b> sacas </a>. <br><br> 
+
+                <a style="font-size: 20px;"> Com base na cotação atual do valor da saca R$ <b style="color: yellow">150</b>, os ganhos com a nova produtividade serão de R$ <b style="color:#7ed957">${ganhos_faturamento}</b></a>. <br><br>
+
+                <a style="font-size: 20px;"> Somando R$ <b style=mjhg"color: yellow">${ganhos_faturamento}</b>, referente aos ganhos com a nova produtividade, com o faturamento inicial no valor de R$ <b style="color: yellow">${faturamento}</b>. O novo faturamento será de R$ <b style="color:#7ed957">${novo_faturamento}</b>, sendo <b style="color:#7ed957">${ganhos_porcentagem_faturamento.toFixed(2)}%</b> a mais com a Moum Soya</a>. <br><br>
+
+                <a style="font-size: 20px;"> Ao utilizar a Moum Soya para monitorar a umidade, você terá uma maior assertividade e precisão no uso de fungicidas, de modo que o custo atual do fungicida irá reduzir em <b style="color:#7ed957">20%</b>. Assim, o novo custo com este tipo de produto, ficará em torno de R$ <b style="color:#7ed957">${gastos_fungicida}</b></a>.<br><br>
+                    
+                <a style="font-size: 20px;"> Devido ao novo custo com o fungicida, o custo total da produção passará a ser R$ <b style="color:#7ed957">${custo_final}</b>, que representa uma diminuição de <b style="color:#7ed957">${custo_final_porcentagem.toFixed(2)}%</b> em relação ao inicial</a>. <br><br>
+                <a style="font-size: 20px;">LUCRO: <b style="color:#7ed957">${lucro_sensor/lucro_inicial} vezes maior com a Moum Soya</b></a>.  <br>
 
                 <hr>
 
                 <button onclick="NovaOperacao()" style="background-color: #7ed957; width: 200px; height: 30px;">Refazer Operação</button>
                 `   
-
             }
         }
         div_mensagem.innerHTML = mensagem;
